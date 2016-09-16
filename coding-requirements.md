@@ -33,21 +33,40 @@
 Please submit a short 1 page project proposal to answer these core questions:
 
 - Team name?
+  - Break/Beats
 
 - Team members?
-
+    - Brad Nielsen
+    - Aly Doerscher
+    - Alex Rdz
 - Project name?
+   - Break/Beats
 
 - What problem does this solve?
-
+    - Boredom at work; Sadness; Frustration; Mental Block
 - Who are our users?
+  ![](https://youtu.be/74BzSTQCl_c?t=9s)
 
 - What is our solution?
+  - Personalized video playlists via email 
 
 - How will we implement this solution?
+    - Creating playlists through the youtube search API
+    - Send emails via SendGrid API
 
 - What APIs will be used? (Must use at least 2)
+    - YouTube and SendGrid
 
 - Rough breakdown of tasks needed to be accomplished.
+ - Create the following funtionality:   
+      - Create interface to search youtube
+      - create playlists from results
+      - end playlits to email
+      - Send playlits to public wall
+      - Add tag attributes to videos and playlists (might just playlist but might add option for individual video) 
+      
+
+
 
 - (Optional) Initial sketch of design.
+  -  (...loading)

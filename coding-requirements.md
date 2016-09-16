@@ -45,7 +45,7 @@ Please submit a short 1 page project proposal to answer these core questions:
 - What problem does this solve?
     - Boredom at work; Sadness; Frustration; Mental Block
 - Who are our users?
-  ![](https://youtu.be/74BzSTQCl_c?t=9s)
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/74BzSTQCl_c" frameborder="0" allowfullscreen></iframe>
 
 - What is our solution?
   - Personalized video playlists via email 

@@ -44,7 +44,7 @@ Please submit a short 1 page project proposal to answer these core questions:
 
 - What problem does this solve?
 -   Sometimes constructing and sharing music playlists can be overly complex and time consuming. 
--   
+-   Sharing music acrooss platforms sometimes means users cannot share music because users do not have the same access. 
     - Boredom at work; Sadness; Frustration; Mental Block
     - 
 - Who are our users?
@@ -65,16 +65,41 @@ Please submit a short 1 page project proposal to answer these core questions:
 - What APIs will be used? (Must use at least 2)
     - Soundcloud and SendGrid
 
-- Rough breakdown of tasks needed to be accomplished.
+- MVP ( Rough breakdown of tasks needed to be accomplished. )
  - Create the following funtionality:   
-      - Create interface to search youtube
-      - create playlists from results
-      - end playlits to email
+      - search soundcloud for  using attributes like genre, artist, song, and album
+      - 
+      - From the results create playlist with up to 3 songs, and length that is no more than 15 minutes
+      - 
+      - send playlits over email
+      -
       - Send playlits to public wall
       - Add tag attributes to videos and playlists (might just playlist but might add option for individual video) 
       
 
 
 
-- (Optional) Initial sketch of design.
-  -  (...loading)
+- (Optional)
+  - Mouse over prieview
+  - search results from multiple sites
+  - tempo filters
+  - up and down votes
+  - play song from the email in addition to the link back to the site
+  - share button (facebook twitter etc...)
+  - 
+  
+- Tasks
+ 
+  - API Research
+  -   Soundcloud
+    - soundcloud client id: 72006e568cc8f77ed2a5b68c4a8c1ca5
+    - Search and return 
+  -       
+  -   Firebase
+  -    Store search results: Search result -> Firebase
+  -     
+
+  -   SendGrid
+  -   
+  -   
+  -   

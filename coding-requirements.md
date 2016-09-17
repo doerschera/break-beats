@@ -43,7 +43,10 @@ Please submit a short 1 page project proposal to answer these core questions:
    - Break/Beats
 
 - What problem does this solve?
+-   Sometimes constructing and sharing music playlists can be overly complex and time consuming. 
+-   
     - Boredom at work; Sadness; Frustration; Mental Block
+    - 
 - Who are our users?
 
 
@@ -52,18 +55,15 @@ Please submit a short 1 page project proposal to answer these core questions:
 
 
 
-
-
-
 - What is our solution?
-  - Personalized video playlists via email 
+  -   Provide a streamlined and minimal interface so users can share personalized audio playlists via email 
 
 - How will we implement this solution?
     - Creating playlists through the youtube search API
     - Send emails via SendGrid API
 
 - What APIs will be used? (Must use at least 2)
-    - YouTube and SendGrid
+    - Soundcloud and SendGrid
 
 - Rough breakdown of tasks needed to be accomplished.
  - Create the following funtionality:   

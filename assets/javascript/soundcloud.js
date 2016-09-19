@@ -1,4 +1,5 @@
 $('#searchButton').on('click', function() {
+	$("#results").empty();
 	event.preventDefault();
 
 	var	genre = $('#searchInput').val();
@@ -13,16 +14,22 @@ $('#searchButton').on('click', function() {
     	})
      	.done(function(response) {
 		
-		console.log("queryURL " + queryURL);
-		console.log(response);
+	        for (var i = 0; i < response.length; i++) {
+				console.log("response" +i);
+				console.log(response[i].id);
+				var responseid = response[i].id;
+				var resultDiv = $('<div id="response'+responseid+'">');
+				var pArtist = "Artist: "+response[i].artist;
+				var pTitle = "Title: "+response[i].title;
+                var artworkImage = $('<img>');
+                artworkImage.attr('src', response[i].artwork_url);
 
-        var results = response.data;
-        		console.log("results" +"0");
-				console.log(response[0].comment_count);
-            for (var i = 0; i < results.length; i++) {
-				console.log("results" +i);
-				console.log(results[i]);
-            }	  		
-   	});
+				resultDiv.append(pArtist).append('<br />');
+				resultDiv.append(pTitle).append('<br />');
+				resultDiv.append(artworkImage)
+
+                $('#results').prepend(resultDiv);
+	        }	  		
+   		});
 });
 

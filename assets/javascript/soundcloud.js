@@ -9,12 +9,12 @@ function searchSoundCloud(searchGere){
 }
 
 $('#searchButton').on('click', function() {
-	var	searchGere = this.val();
+	event.preventDefault();
+	var	searchGere = $('#searchInput').val();
 	searchSoundCloud(searchGere);
 	console.log(searchGere);
 	alert(halp);
-
-
+	return false;
 });
 
 

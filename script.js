@@ -8,14 +8,18 @@ function search(searchTerm) {
   }).done(function(response) {
 
 
-    for(var i = 0; i < 10; i++) {
+    for(var i = 0; i < 5; i++) {
       var videoId = response.items[i].id.videoId;
-      var src = 'https://www.youtube.com/watch?v='+videoId;
+      var src = 'https://www.youtube.com/embed'+videoId;
       console.log(videoId);
-      $('<div>');
-      $('<div>', {
+      $('<iframe />');
+      $('<iframe />', {
         id: 'video1',
-      }).appendTo('#results');
+        width: '640',
+        height: '390',
+        src: src,
+        frameborder: '0'
+      }).appendTo('#player');
     }
   })
 }

@@ -1,6 +1,6 @@
 
 function search(searchTerm) {
-  var searchQuerey = " https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q="+searchTerm+"&type=video&key=AIzaSyDIE0dd7hZ5j4vQRtwrU0CwQLGq-lhXWCc";
+  var searchQuerey = " https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&q="+searchTerm+"&type=video&key=AIzaSyDIE0dd7hZ5j4vQRtwrU0CwQLGq-lhXWCc";
 
   $.ajax({
     url: searchQuerey,

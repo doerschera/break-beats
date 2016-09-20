@@ -10,7 +10,7 @@ function search(searchTerm) {
 
     for(var i = 0; i < 5; i++) {
       var videoId = response.items[i].id.videoId;
-      var src = 'https://www.youtube.com/embed'+videoId;
+      var src = 'https://www.youtube.com/embed/'+videoId;
       console.log(videoId);
       $('<iframe />');
       $('<iframe />', {

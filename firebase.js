@@ -10,5 +10,34 @@ $(document).ready(function() {
   };
   firebase.initializeApp(config);
 
+  $('#search').on('click', function() {
+    var searchTerm = $('#searchField').val().trim();
+    var qUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&q="+searchTerm+"&type=video&key=AIzaSyDIE0dd7hZ5j4vQRtwrU0CwQLGq-lhXWCc"
+
+
+    $.ajax({
+      url: qUrl,
+      method: 'GET'
+    }).done(function(response) {
+        for(var i = 0; i < 10; i++) {
+          var videoId = response.items[i].id.videoId;
+          var src = "https://www.youtube.com/embed/"+videoId;
+          console.log(videoId);
+          var wrapperDiv = $('<div>');
+          $(wrapperDiv).addClass('playerWrapper');
+          $('<iframe />');
+          $('<iframe />', {
+            id: 'video1',
+            width: '320',
+            height: '195',
+            src: src,
+            frameborder: '0'
+          }).appendTo(wrapperDiv);
+          $('.results').append(wrapperDiv);
+
+        }
+    })
+  })
+
 
 })

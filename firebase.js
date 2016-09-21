@@ -10,6 +10,10 @@ $(document).ready(function() {
   };
   firebase.initializeApp(config);
 
+  // Global vars
+  var playlistName;
+  var selectedVideoCounter = 0;
+
   $('#search').on('click', function() {
     var searchTerm = $('#searchField').val().trim();
     var qUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&q="+searchTerm+"&type=video&key=AIzaSyDIE0dd7hZ5j4vQRtwrU0CwQLGq-lhXWCc"
@@ -38,7 +42,18 @@ $(document).ready(function() {
 
         }
     })
-  })
 
+    $('#submit').on('click', function() {
+      playlistName = $('#playlistName').val().trim();
+    })
+
+    $(document).on('click', '.playerWrapper', function() {
+      $(this).css('border', 'solid 2px green');
+      var selectedVideoId = $(this).attr('data-id');
+      console.log(selectedVideoId);
+      firebase.database().ref('/playlists/'+playlistName+'/'+selectedVideoCounter).update({videoId: selectedVideoId});
+      selectedVideoCounter++
+    })
+  })
 
 })

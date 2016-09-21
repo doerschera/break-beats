@@ -25,13 +25,14 @@ $(document).ready(function() {
           console.log(videoId);
           var wrapperDiv = $('<div>');
           $(wrapperDiv).addClass('playerWrapper');
+          $(wrapperDiv).attr('data-id', videoId);
           $('<iframe />');
           $('<iframe />', {
             id: 'video1',
             width: '320',
             height: '195',
             src: src,
-            frameborder: '0'
+            frameborder: '0',
           }).appendTo(wrapperDiv);
           $('.results').append(wrapperDiv);
 

@@ -10,8 +10,29 @@
 
 
 </head>
-<body>
+<body><div class="main">
     <div class="Selected-list"></div>
+    <form id="submit-playlist">
+      <!-- Label for Text Box -->
+      <label for="playlist-name">Playlist Name</label>
+
+      <!-- Text Input Box -->
+      <input type="text" class="playlist-name" placeholder="Playlist name"> &nbsp; 
+
+      <!-- Label for Text Box -->
+      <label for="email">Email</label>
+      
+
+      <br>
+      <!-- Text Input Box -->
+      <input type="text" class="email" placeholder="Email address"> &nbsp; 
+
+      <!-- Submit Button -->
+      <input class="save-playlist" type="submit" value="Send!">
+
+    </form>
+
+    <hr>
     <div class="show-videos"></div>
     <div class="main">
       <form id="search-form">
@@ -28,7 +49,12 @@
       <div id="player"></div>
     </div>
 
+
+</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <script type="text/javascript" src="assets/javascript/email.js"></script>
   </body>
 </html>

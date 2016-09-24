@@ -1,10 +1,23 @@
 var BB = (function() {
 
+// Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAauOC4PC5WrE3Br4Ff1-HkA-FxBmh1QfQ",
+    authDomain: "breakbeats-4758a.firebaseapp.com",
+    databaseURL: "https://breakbeats-4758a.firebaseio.com",
+    storageBucket: "breakbeats-4758a.appspot.com",
+    messagingSenderId: "1058322946724"
+  };
+  firebase.initializeApp(config);
+
+
   // cache DOM
   var $submitButton = $('#submit'),
       $videosContainer = $('#player'),
       $listContainer = $('.Selected-list'),
       $searchInput = $('#search-input'),
+      $saveButton = $('.save-playlist'),
+      $playlistName = $('.playlist-name'),
       query,
       searchTerm,
       videoId,
@@ -20,7 +33,7 @@ var BB = (function() {
   function renderSelectedTitles(titles) {
     $listContainer.html('');
     for(var i = 0; i < titles.length; i++) {
-      $listContainer.append('<h3>'+ titles[i] +'<h3>');
+      $listContainer.append('<h3>'+ titles[i].title +'<h3>');
     }
     
   }
@@ -28,6 +41,8 @@ var BB = (function() {
 
 // bind events
   $submitButton.on('click', doSearch);
+  // $saveButton.on('click', getTitle);
+
 
 
 // search function
@@ -62,7 +77,7 @@ var BB = (function() {
       frameborder: '0'
     });
     // var checkbox = '<label class="checkbox" for="' + videoId + '"><input type="checkbox" checked="checked" value="" id="' + videoId + '" data-toggle="checkbox" class="custom-checkbox"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span></label>';
-    var checkbox = '<input type="checkbox" class="checkbox" id=' + item.id.videoId + ' data-title="' + item.snippet.title + '" class="checkbox" />';
+    var checkbox = '<input type="checkbox" class="checkbox" id=' + item.id.videoId + ' data-title="' + item.snippet.title + '" data-image="' + item.snippet.thumbnails.default.url + '" class="checkbox" />';
     videoContainer.append(video).append(checkbox);
     renderVideos(videoContainer);
   }
@@ -95,18 +110,27 @@ var BB = (function() {
 
   function addVideoToPlaylist() {
     if ( $(this).is(":checked") ) {
-        videoTitle = $(this).data('title');
-        titles.push(videoTitle);
+        videoTitle  = $(this).data('title');
+        videoId     = $(this).attr('id');
+        videoImg    = $(this).data('image');
+        titles.push({
+          'title': videoTitle, 
+          'image': videoImg, 
+          'videoId': videoId
+        });
         renderSelectedTitles(titles);
         disableSelectionIfPlaylistFull();
-        // $(this).attr("checked", returnVal);
     } else {
       videoTitle = $(this).data('title');
-      var index = titles.indexOf(videoTitle);
-      if (index > -1) {
-        titles.splice(index, 1);
-        renderSelectedTitles(titles);
+
+      for(var i = 0; i < titles.length; i++) {
+        if(titles[i].title === videoTitle) {
+          titles.splice(i, 1);
+        }
       }
+      renderSelectedTitles(titles);
+      console.log(titles);
+
       enableSelection();
     }
   }
@@ -132,6 +156,30 @@ var BB = (function() {
         
 
   }
+
+
+
+
+
+
+
+  /* -------------------------------------------
+   * firebase integration
+   * ---------------------------------------- */
+
+
+  // function getTitle() {
+  //   var playlistName = $playlistName.val().trim();
+  //   saveToFirebase(playlistName);
+  // }
+
+  // function saveToFirebase(playlistName) {
+  //   // add to firebase
+  //   firebase.database().ref('/playlists/'+playlistName).update({
+  //     videoId: selectedVideoId,
+  //     defaultImg: selectedVideoImg
+  //   });
+  // }
 
 
   console.log(titles);

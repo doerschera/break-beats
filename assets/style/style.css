@@ -1,0 +1,45 @@
+@import "https://fonts.googleapis.com/css?family=Comfortaa|Josefin+Sans:300,400";
+body {
+  font-family: "Josefin Sans", "Helvetica", sans-serif;
+  font-weight: 400;
+  color: white; }
+
+a {
+  color: white; }
+
+.landing-page {
+  width: 100vw;
+  min-height: 100vh;
+  background-image: url("images/unsplash-kitsune-4.jpg");
+  background-size: cover; }
+  .landing-page img {
+    position: absolute;
+    left: 20px;
+    top: 20px; }
+  .landing-page .call-to-action {
+    margin-top: 75px; }
+    .landing-page .call-to-action h1 {
+      margin: 5px 0; }
+  .landing-page #js-landing-search {
+    margin-top: 80px;
+    background-color: #6E7592;
+    padding: 10px 10px 5px 10px;
+    border: solid 1px white; }
+  .landing-page .or-statement {
+    position: relative; }
+  .landing-page .line-emphasis {
+    position: absolute;
+    border-bottom: solid 1px white;
+    bottom: 45px; }
+  .landing-page .left-line {
+    left: 66.66% !important; }
+  .landing-page h2 {
+    text-align: center; }
+  .landing-page #js-create-playlist {
+    background-color: #AB537F;
+    padding: 5px; }
+    .landing-page #js-create-playlist h2 {
+      font-size: 2rem;
+      text-align: center; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,8 +1,63 @@
 @import 'https://fonts.googleapis.com/css?family=Comfortaa|Josefin+Sans:300,400';
+@import "variables";
+@import "mixins";
 
 body {
   font : {
     family: $josefin-sans;
     weight: 400;
   }
+  color: white;
+}
+
+a {
+  color: white;
+  text-decoration: underline;
+}
+
+.landing-page {
+  width: 100vw;
+  min-height: 100vh;
+  background-image: url("images/unsplash-kitsune-4.jpg");
+  background-size: cover;
+  img {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+  }
+  .call-to-action {
+    margin-top: 75px;
+    h1 {
+      margin: 5px 0;
+    }
+  }
+  #js-landing-search {
+    margin-top: 80px;
+    background-color: $blue-grey;
+    padding: 10px 10px 5px 10px;
+    border: solid 1px white;
+  }
+  .or-statement {
+    position: relative;
+  }
+  .line-emphasis {
+    position: absolute;
+    border-bottom: solid 1px white;
+    bottom: 45px;
+  }
+  .left-line {
+    left: 66.66% !important;
+  }
+  h2 {
+    text-align: center;
+  }
+  #js-create-playlist {
+    background-color: $magenta;
+    padding: 5px;
+    h2 {
+      font-size: 2rem;
+      text-align: center;
+    }
+  }
+
 }

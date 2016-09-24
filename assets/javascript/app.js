@@ -10,6 +10,25 @@ var BB = (function() {
   };
   firebase.initializeApp(config);
 
+// create a db reference
+  var dbRef = firebase.database().ref();
+// create a reference to the 'links' child inside db
+  playlistsRef = dbRef.child('playlists');
+  console.log(playlistsRef);
+
+  playlistsRef.on('value', function(snapshot) {
+    var playlists = snapshot.val();
+    for(var playlist in playlists) {
+      console.log(atob(playlist));
+    }
+  });
+
+
+
+
+
+
+
 
   // cache DOM
   var $submitButton = $('#submit'),
@@ -41,7 +60,7 @@ var BB = (function() {
 
 // bind events
   $submitButton.on('click', doSearch);
-  // $saveButton.on('click', getTitle);
+  $saveButton.on('click', getTitle);
 
 
 
@@ -96,12 +115,12 @@ var BB = (function() {
         results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
-    console.log(results[2].replace(/\+/g, " "));
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
+    var playlistId = results[2].replace(/\+/g, " ");
+    return decodeURIComponent(atob(playlistId));
   }
 
   // usage:
-  // $('.show-videos').html(getURIParameter('breakid'));
+  $('.show-videos').html(getURIParameter('breakid'));
 
 
 
@@ -129,8 +148,6 @@ var BB = (function() {
         }
       }
       renderSelectedTitles(titles);
-      console.log(titles);
-
       enableSelection();
     }
   }
@@ -168,18 +185,29 @@ var BB = (function() {
    * ---------------------------------------- */
 
 
-  // function getTitle() {
-  //   var playlistName = $playlistName.val().trim();
-  //   saveToFirebase(playlistName);
-  // }
+  function getTitle() {
+    var playlistName = btoa($playlistName.val().trim());
+    for(i = 0; i < titles.length; i++) {
+      saveToFirebase(playlistName, titles[i]);
+    }
+    return false;
+  }
 
-  // function saveToFirebase(playlistName) {
-  //   // add to firebase
-  //   firebase.database().ref('/playlists/'+playlistName).update({
-  //     videoId: selectedVideoId,
-  //     defaultImg: selectedVideoImg
-  //   });
-  // }
+  function saveToFirebase(playlistName, video) {
+    // add to firebase
+    // firebase.database().ref('/playlists/'+playlistName).update({
+    //   videoId: selectedVideoId,
+    //   defaultImg: selectedVideoImg
+    // });
+    vid = video.videoId;
+    vimg = video.image;
+    playlistsRef.child(playlistName).push({
+        videoId: vid,
+        defaultImg: vimg
+    });
+    
+    
+  }
 
 
   console.log(titles);

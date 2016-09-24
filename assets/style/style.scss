@@ -1,1 +1,8 @@
 @import 'https://fonts.googleapis.com/css?family=Comfortaa|Josefin+Sans:300,400';
+
+body {
+  font : {
+    family: $josefin-sans;
+    weight: 400;
+  }
+}

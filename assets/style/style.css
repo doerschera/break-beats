@@ -64,6 +64,31 @@ a {
   border-style: solid;
   background-color: white;
   color: #AB537F;
+  text-decoration: underline;
   padding: 10px 10px 5px 10px; }
+.search-playlists .playlist-results .playlist-display {
+  padding: 0;
+  background-color: #E6E7E8;
+  border: solid 1px #AB537F; }
+  .search-playlists .playlist-results .playlist-display h3 {
+    padding-left: 10px;
+    font-size: 1.75rem;
+    margin-bottom: 0;
+    border-bottom: solid 1px #b3b3b3; }
+  .search-playlists .playlist-results .playlist-display ul {
+    margin: 0; }
+    .search-playlists .playlist-results .playlist-display ul li {
+      padding: 5px;
+      background-color: white;
+      border-bottom: solid 1px #b3b3b3; }
+      .search-playlists .playlist-results .playlist-display ul li img {
+        vertical-align: middle;
+        display: inline-block;
+        width: 32px; }
+      .search-playlists .playlist-results .playlist-display ul li p {
+        display: inline-block;
+        padding-left: 10px;
+        font-size: 1.25rem;
+        color: #E6E7E8; }
 
 /*# sourceMappingURL=style.css.map */

@@ -15,6 +15,10 @@ a {
   text-decoration: underline;
 }
 
+.disable {
+  display: none;
+}
+
 .landing-page {
   width: 100vw;
   min-height: 100vh;
@@ -32,10 +36,7 @@ a {
     }
   }
   #js-landing-search {
-    margin-top: 80px;
-    background-color: $blue-grey;
-    padding: 10px 10px 5px 10px;
-    border: solid 1px white;
+    @include big-search-bar(80px, $blue-grey);
   }
   .or-statement {
     position: relative;

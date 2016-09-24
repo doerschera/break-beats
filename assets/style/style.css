@@ -66,29 +66,55 @@ a {
   color: #AB537F;
   text-decoration: underline;
   padding: 10px 10px 5px 10px; }
-.search-playlists .playlist-results .playlist-display {
+.search-playlists .playlist-results .content-wrapper {
+  position: relative;
   padding: 0;
   background-color: #E6E7E8;
   border: solid 1px #AB537F; }
-  .search-playlists .playlist-results .playlist-display h3 {
+  .search-playlists .playlist-results .content-wrapper h3 {
     padding-left: 10px;
     font-size: 1.75rem;
     margin-bottom: 0;
     border-bottom: solid 1px #b3b3b3; }
-  .search-playlists .playlist-results .playlist-display ul {
+  .search-playlists .playlist-results .content-wrapper ul {
     margin: 0; }
-    .search-playlists .playlist-results .playlist-display ul li {
+    .search-playlists .playlist-results .content-wrapper ul li {
       padding: 5px;
       background-color: white;
       border-bottom: solid 1px #b3b3b3; }
-      .search-playlists .playlist-results .playlist-display ul li img {
+      .search-playlists .playlist-results .content-wrapper ul li img {
         vertical-align: middle;
         display: inline-block;
         width: 32px; }
-      .search-playlists .playlist-results .playlist-display ul li p {
+      .search-playlists .playlist-results .content-wrapper ul li p {
         display: inline-block;
         padding-left: 10px;
-        font-size: 1.25rem;
+        font-size: 1rem;
         color: #E6E7E8; }
+.search-playlists .playlist-results .playlist-hover {
+  position: absolute;
+  bottom: 0px;
+  background-color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  height: 229px;
+  border: solid 1px #AB537F;
+  -webkit-box-shadow: 7px 7px 5px #AB537F;
+  -moz-box-shadow: 7px 7px 5px #AB537F;
+  box-shadow: 7px 7px 5px #AB537F; }
+  .search-playlists .playlist-results .playlist-hover h4, .search-playlists .playlist-results .playlist-hover h5 {
+    color: #AB537F; }
+  .search-playlists .playlist-results .playlist-hover h5 {
+    font-size: 1.5rem;
+    word-spacing: 10px; }
+  .search-playlists .playlist-results .playlist-hover #js-view-playlist {
+    position: relative;
+    border-radius: 0;
+    border-width: 1px;
+    border-color: #AB537F;
+    border-image: none;
+    border-style: solid;
+    background-color: white;
+    color: #AB537F;
+    top: 90px; }
 
 /*# sourceMappingURL=style.css.map */

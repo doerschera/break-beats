@@ -19,16 +19,17 @@ a {
   display: none;
 }
 
+.logo {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
 .landing-page {
   width: 100vw;
   min-height: 100vh;
   background-image: url("images/unsplash-kitsune-4.jpg");
   background-size: cover;
-  img {
-    position: absolute;
-    left: 20px;
-    top: 20px;
-  }
   .call-to-action {
     margin-top: 75px;
     h1 {
@@ -36,7 +37,7 @@ a {
     }
   }
   #js-landing-search {
-    @include big-search-bar(80px, $blue-grey);
+    @include big-search-bar(80px, $blue-grey, white);
   }
   .or-statement {
     position: relative;
@@ -60,5 +61,14 @@ a {
       text-align: center;
     }
   }
+}
 
+.search-playlists {
+  #js-playlist-search {
+    @include big-search-bar(150px, $magenta, $magenta);
+    position: relative;
+  }
+  #js-playlist-search-button {
+    @include big-button($magenta);
+  }
 }

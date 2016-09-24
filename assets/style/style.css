@@ -5,17 +5,22 @@ body {
   color: white; }
 
 a {
-  color: white; }
+  color: white;
+  text-decoration: underline; }
+
+.disable {
+  display: none; }
+
+.logo {
+  position: absolute;
+  left: 20px;
+  top: 20px; }
 
 .landing-page {
   width: 100vw;
   min-height: 100vh;
   background-image: url("images/unsplash-kitsune-4.jpg");
   background-size: cover; }
-  .landing-page img {
-    position: absolute;
-    left: 20px;
-    top: 20px; }
   .landing-page .call-to-action {
     margin-top: 75px; }
     .landing-page .call-to-action h1 {
@@ -41,5 +46,24 @@ a {
     .landing-page #js-create-playlist h2 {
       font-size: 2rem;
       text-align: center; }
+
+.search-playlists #js-playlist-search {
+  margin-top: 150px;
+  background-color: #AB537F;
+  padding: 10px 10px 5px 10px;
+  border: solid 1px #AB537F;
+  position: relative; }
+.search-playlists #js-playlist-search-button {
+  position: relative;
+  bottom: 38px;
+  left: 100%;
+  border-radius: 0;
+  border-width: 1px;
+  border-color: #AB537F;
+  border-image: none;
+  border-style: solid;
+  background-color: white;
+  color: #AB537F;
+  padding: 10px 10px 5px 10px; }
 
 /*# sourceMappingURL=style.css.map */

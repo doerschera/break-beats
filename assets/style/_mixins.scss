@@ -1,6 +1,20 @@
-@mixin big-search-bar($margin-top, $color) {
-  margin-top: $margin-top: ;
+@mixin big-search-bar($margin-top, $color, $border-color) {
+  margin-top: $margin-top;
   background-color: $color;
   padding: 10px 10px 5px 10px;
-  border: solid 1px white;
+  border: solid 1px $border-color;
+}
+
+@mixin big-button($color) {
+  position: relative;
+  bottom: 38px;
+  left: 100%;
+  border-radius: 0;
+  border-width: 1px;
+  border-color: $color;
+  border-image: none;
+  border-style: solid;
+  background-color: white;
+  color: $color;
+  padding: 10px 10px 5px 10px;
 }

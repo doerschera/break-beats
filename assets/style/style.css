@@ -11,6 +11,9 @@ a {
 .disable {
   display: none; }
 
+.opacity {
+  opacity: 0.05; }
+
 .logo {
   position: absolute;
   left: 20px;
@@ -91,7 +94,7 @@ a {
         padding-left: 10px;
         font-size: 1rem;
         color: #E6E7E8; }
-.search-playlists .playlist-results .playlist-hover {
+.search-playlists .playlist-hover {
   position: absolute;
   bottom: 0px;
   background-color: rgba(255, 255, 255, 0.9);
@@ -101,12 +104,12 @@ a {
   -webkit-box-shadow: 7px 7px 5px #AB537F;
   -moz-box-shadow: 7px 7px 5px #AB537F;
   box-shadow: 7px 7px 5px #AB537F; }
-  .search-playlists .playlist-results .playlist-hover h4, .search-playlists .playlist-results .playlist-hover h5 {
+  .search-playlists .playlist-hover h4, .search-playlists .playlist-hover h5 {
     color: #AB537F; }
-  .search-playlists .playlist-results .playlist-hover h5 {
+  .search-playlists .playlist-hover h5 {
     font-size: 1.5rem;
     word-spacing: 10px; }
-  .search-playlists .playlist-results .playlist-hover #js-view-playlist {
+  .search-playlists .playlist-hover #js-view-playlist {
     position: relative;
     border-radius: 0;
     border-width: 1px;
@@ -164,5 +167,69 @@ a {
     background-color: white;
     color: #6E7592;
     margin-top: 10px; }
+
+.playlist-review-send {
+  position: relative;
+  bottom: 635px; }
+  .playlist-review-send #js-playlist-name, .playlist-review-send #js-email-address, .playlist-review-send #js-add-tags {
+    background-color: #92C6DE;
+    padding: 5px; }
+  .playlist-review-send .send-column {
+    text-align: center; }
+    .playlist-review-send .send-column #js-send-email {
+      background-color: #92C6DE;
+      padding: 5px; }
+      .playlist-review-send .send-column #js-send-email h2 {
+        font-size: 2rem;
+        text-align: center; }
+    .playlist-review-send .send-column a {
+      color: #92C6DE;
+      font-size: 10px;
+      text-align: center; }
+  .playlist-review-send .playlist-display {
+    position: relative;
+    padding: 0;
+    background-color: #E6E7E8;
+    border: solid 1px #92C6DE;
+    -webkit-box-shadow: 7px 7px 5px #92C6DE;
+    -moz-box-shadow: 7px 7px 5px #92C6DE;
+    box-shadow: 7px 7px 5px #92C6DE; }
+    .playlist-review-send .playlist-display h3 {
+      padding-left: 10px;
+      font-size: 1.75rem;
+      margin-bottom: 0;
+      border-bottom: solid 1px #b3b3b3; }
+    .playlist-review-send .playlist-display ul {
+      margin: 0; }
+      .playlist-review-send .playlist-display ul li {
+        padding: 5px;
+        background-color: white;
+        border-bottom: solid 1px #b3b3b3; }
+        .playlist-review-send .playlist-display ul li img {
+          vertical-align: middle;
+          display: inline-block;
+          width: 32px; }
+        .playlist-review-send .playlist-display ul li p {
+          display: inline-block;
+          padding-left: 10px;
+          font-size: 1rem;
+          color: #E6E7E8; }
+  .playlist-review-send #js-add-tag-button {
+    position: relative;
+    border-radius: 0;
+    border-width: 1px;
+    border-color: #92C6DE;
+    border-image: none;
+    border-style: solid;
+    background-color: white;
+    color: #92C6DE;
+    float: right;
+    margin-top: 5px; }
+  .playlist-review-send #js-user-tags {
+    text-align: center;
+    margin-top: 40px;
+    color: #92C6DE;
+    font-size: 1.5rem;
+    word-spacing: 20px; }
 
 /*# sourceMappingURL=style.css.map */

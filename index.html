@@ -117,7 +117,7 @@
       </div>
     </div>
 
-    <div class="search-yt">
+    <div class="opacity search-yt">
       <div class="container">
         <div class="row">
           <div class="col s4">
@@ -180,27 +180,30 @@
 
     <div class="playlist-review-send">
       <div class="container">
+        <div id="js-x-button">
+          <span></span>
+        </div>
         <div class="row">
           <div class="col s9">
             <div class="enter-info col s6">
               <div id="js-playlist-name">
-
+                name your playlist...
               </div>
             </div>
             <div class="enter-info col s6">
               <div id="js-email-address">
-
+                email address...
               </div>
             </div>
           </div>
           <div class="col s3">
-            <div class="col s10">
-              <button id="js-send-email">
-                Send
-              </button>
-              <p>
+            <div class="send-column col s10">
+              <div id="js-send-email">
+                <h2>send</h2>
+              </div>
+              <a href="#">
                 save without sending
-              </p>
+              </a>
             </div>
           </div>
         </div>
@@ -225,10 +228,11 @@
               </div>
             </div>
             <div class="col s6">
-              <div id="add-tags">
+              <div id="js-add-tags">
                 add tags...
               </div>
-              <div id="user-tags">
+              <button type="button" id="js-add-tag-button">add</button>
+              <div id="js-user-tags">
                 cats bowtie hipster funny kittens
               </div>
             </div>

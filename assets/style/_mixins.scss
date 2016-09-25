@@ -1,8 +1,22 @@
+@mixin action-button($color) {
+  background-color: $color;
+  padding: 5px;
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+
 @mixin big-search-bar($margin-top, $color, $border-color) {
   margin-top: $margin-top;
   background-color: $color;
   padding: 10px 10px 5px 10px;
   border: solid 1px $border-color;
+}
+
+@mixin small-search-bar($color) {
+  background-color: $color;
+  padding: 5px;
 }
 
 @mixin big-button($color) {
@@ -29,4 +43,36 @@
   border-style: solid;
   background-color: white;
   color: $color;
+}
+
+@mixin playlist-display($color) {
+  position: relative;
+  padding: 0;
+  background-color: $light-grey;
+  border: solid 1px $color;
+  h3 {
+    padding-left: 10px;
+    font-size: 1.75rem;
+    margin-bottom: 0;
+    border-bottom: solid 1px $dark-grey;
+  }
+  ul {
+    margin: 0;
+    li {
+      padding: 5px;
+      background-color: white;
+      border-bottom: solid 1px $dark-grey;
+      img {
+        vertical-align: middle;
+        display: inline-block;
+        width: 32px;
+      }
+      p {
+        display: inline-block;
+        padding-left: 10px;
+        font-size: 1rem;
+        color: $light-grey;
+      }
+    }
+  }
 }

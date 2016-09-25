@@ -69,7 +69,8 @@ a {
     line-height: normal;
     text-transform: none; }
     .landing-page #js-create-playlist .btn h2 {
-      font-size: 2rem; }
+      font-size: 2rem;
+      color: white; }
 
 .search-playlists #js-playlist-search {
   margin-top: 150px;
@@ -142,6 +143,7 @@ a {
     height: auto;
     line-height: 1.5;
     text-transform: none;
+    padding: 0 10px;
     top: 90px; }
   .search-playlists .playlist-hover .chip {
     background-color: #AB537F;
@@ -199,14 +201,26 @@ a {
     height: auto;
     line-height: 1.5;
     text-transform: none;
+    padding: 0 10px;
     margin-top: 10px; }
 
 .playlist-review-send {
-  position: relative;
-  bottom: 635px; }
+  position: absolute;
+  width: 100%;
+  bottom: 60px; }
+  .playlist-review-send #close-review-send {
+    position: absolute;
+    top: -150px;
+    left: 90%; }
+    .playlist-review-send #close-review-send a {
+      color: #92C6DE; }
   .playlist-review-send #js-playlist-name, .playlist-review-send #js-email-address, .playlist-review-send #js-add-tags {
     background-color: #92C6DE;
-    padding: 0 10px; }
+    margin-bottom: 0;
+    height: 2rem; }
+    .playlist-review-send #js-playlist-name:focus, .playlist-review-send #js-email-address:focus, .playlist-review-send #js-add-tags:focus {
+      border: none;
+      box-shadow: none; }
   .playlist-review-send .send-column {
     text-align: center; }
     .playlist-review-send .send-column #js-send-email .btn {
@@ -216,7 +230,8 @@ a {
       line-height: normal;
       text-transform: none; }
       .playlist-review-send .send-column #js-send-email .btn h2 {
-        font-size: 2rem; }
+        font-size: 2rem;
+        color: white; }
     .playlist-review-send .send-column a {
       color: #92C6DE;
       font-size: 10px;
@@ -261,13 +276,15 @@ a {
     height: auto;
     line-height: 1.5;
     text-transform: none;
+    padding: 0 10px;
     float: right;
     margin-top: 5px; }
   .playlist-review-send #js-user-tags {
-    text-align: center;
-    margin-top: 40px;
-    color: #92C6DE;
-    font-size: 1.5rem;
-    word-spacing: 20px; }
+    margin-top: 50px; }
+    .playlist-review-send #js-user-tags .chip {
+      text-align: center;
+      background-color: #92C6DE;
+      color: white;
+      margin-right: 10px; }
 
 /*# sourceMappingURL=style.css.map */

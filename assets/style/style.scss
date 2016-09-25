@@ -159,8 +159,17 @@ a {
 }
 
 .playlist-review-send {
-  position: relative;
-  bottom: 635px;
+  position: absolute;
+  width: 100%;
+  bottom: 60px;
+  #close-review-send {
+    position: absolute;
+    top: -150px;
+    left: 90%;
+    a {
+      color: $light-blue;
+    }
+  }
   #js-playlist-name, #js-email-address, #js-add-tags {
     @include small-search-bar($light-blue);
   }
@@ -187,10 +196,12 @@ a {
     margin-top: 5px;
   }
   #js-user-tags {
-    text-align: center;
-    margin-top: 40px;
-    color: $light-blue;
-    font-size: 1.5rem;
-    word-spacing: 20px;
+    margin-top: 50px;
+    .chip {
+      text-align: center;
+      background-color: $light-blue;
+      color: white;
+      margin-right: 10px;
+    }
   }
 }

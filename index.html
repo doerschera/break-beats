@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <!-- Materialize Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <!-- materialize icons -->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Local css -->
     <link rel="stylesheet" href="assets/style/style.css">
     <!-- Firebase Link -->
@@ -47,7 +49,7 @@
       </div>
     </div>
 
-    <div class="search-playlists">
+    <div class="disable search-playlists">
       <div class="container">
         <div class="row">
           <div class="col s4">
@@ -56,7 +58,7 @@
         </div>
         <div class="row">
           <div class="col s6 offset-s3">
-            <input type="text" class="z-depth-1" placeholder="find a playlist..." id="js-playlist-search"></input>
+            <input type="text" placeholder="find a playlist..." id="js-playlist-search"></input>
             <a class="waves-effect btn" id="js-playlist-search-button">search</a>
           </div>
         </div>
@@ -120,7 +122,7 @@
       </div>
     </div>
 
-    <div class="disable opacity search-yt">
+    <div class="opacity search-yt">
       <div class="container">
         <div class="row">
           <div class="col s4">
@@ -129,10 +131,8 @@
         </div>
         <div class="row">
           <div class="col s6 offset-s3">
-            <div id="js-yt-search">
-              find a video...
-            </div>
-            <button type="button" id="js-yt-search-button">search</button>
+            <input type="text" placeholder="find a playlist..." id="js-yt-search"></input>
+            <a class="waves-effect btn" id="js-yt-search-button">search</a>
           </div>
         </div>
         <div class="row">
@@ -175,28 +175,24 @@
               <li>pLeAse loooveee me</li>
               <li>THE Kermit kitten talk show</li>
             </ul>
-            <button type="button" id="js-view-new-playlist">view</button>
+            <a class="waves-effect btn" id="js-view-new-playlist">view</a>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="disable playlist-review-send">
+    <div class="playlist-review-send">
       <div class="container">
-        <div id="js-x-button">
-          <span></span>
+        <div id="close-review-send">
+          <a href="#"><i class="close material-icons">close</i></a>
         </div>
         <div class="row">
           <div class="col s9">
             <div class="enter-info col s6">
-              <div id="js-playlist-name">
-                name your playlist...
-              </div>
+              <input type="text" placeholder="name your playlist..." id="js-playlist-name"></input>
             </div>
             <div class="enter-info col s6">
-              <div id="js-email-address">
-                email address...
-              </div>
+              <input type="text" placeholder="email address..." id="js-email-address"></input>
             </div>
           </div>
           <div class="col s3">
@@ -231,12 +227,29 @@
               </div>
             </div>
             <div class="col s6">
-              <div id="js-add-tags">
-                add tags...
-              </div>
+              <input type="text" placeholder="add tags..." id="js-add-tags"></input>
               <button type="button" id="js-add-tag-button">add</button>
               <div id="js-user-tags">
-                cats bowtie hipster funny kittens
+                <div class="chip">
+                  cats
+                  <i class="close material-icons">close</i>
+                </div>
+                <div class="chip">
+                  bowtie
+                  <i class="close material-icons">close</i>
+                </div>
+                <div class="chip">
+                  funny
+                  <i class="close material-icons">close</i>
+                </div>
+                <div class="chip">
+                  hipster
+                  <i class="close material-icons">close</i>
+                </div>
+                <div class="chip">
+                  kitten
+                  <i class="close material-icons">close</i>
+                </div>
               </div>
             </div>
           </div>

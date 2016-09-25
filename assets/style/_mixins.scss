@@ -7,6 +7,7 @@
     text-transform: none;
     h2 {
       font-size: 2rem;
+      color: white;
     }
   }
 }
@@ -21,7 +22,12 @@
 
 @mixin small-search-bar($color) {
   background-color: $color;
-  padding: 0 10px;
+  margin-bottom: 0;
+  height: 2rem;
+  &:focus {
+    border: none;
+    box-shadow: none;
+  }
 }
 
 @mixin big-button($color) {
@@ -53,6 +59,7 @@
   height: auto;
   line-height: 1.5;
   text-transform: none;
+  padding: 0 10px;
 }
 
 @mixin playlist-display($color) {

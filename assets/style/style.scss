@@ -127,3 +127,42 @@ a {
     }
   }
 }
+
+.search-yt {
+  #js-yt-search {
+    @include big-search-bar(150px, $blue-grey, $blue-grey);
+  }
+  #js-yt-search-button {
+    @include big-button($blue-grey);
+  }
+  .video {
+    margin-bottom: 10px;
+    div {
+      border: solid 1px $blue-grey;
+      height: 195px;
+      color: $blue-grey;
+    }
+  }
+  .selected-videos {
+    border-left: solid 1px $light-grey;
+    position: fixed;
+    left: 75% !important;
+    padding-bottom: 10px;
+    h3 {
+      color: $blue-grey;
+      font-size: 1.25rem;
+      margin-top: 10px;
+    }
+    ul {
+      li {
+        font-size: 1rem;
+        color: $blue-grey;
+        margin-bottom: 10px;
+      }
+    }
+    #js-view-new-playlist {
+      @include small-button($blue-grey);
+      margin-top: 10px;
+    }
+  }
+}

@@ -117,4 +117,52 @@ a {
     color: #AB537F;
     top: 90px; }
 
+.search-yt #js-yt-search {
+  margin-top: 150px;
+  background-color: #6E7592;
+  padding: 10px 10px 5px 10px;
+  border: solid 1px #6E7592; }
+.search-yt #js-yt-search-button {
+  position: relative;
+  bottom: 38px;
+  left: 100%;
+  border-radius: 0;
+  border-width: 1px;
+  border-color: #6E7592;
+  border-image: none;
+  border-style: solid;
+  background-color: white;
+  color: #6E7592;
+  text-decoration: underline;
+  padding: 10px 10px 5px 10px; }
+.search-yt .video {
+  margin-bottom: 10px; }
+  .search-yt .video div {
+    border: solid 1px #6E7592;
+    height: 195px;
+    color: #6E7592; }
+.search-yt .selected-videos {
+  border-left: solid 1px #E6E7E8;
+  position: fixed;
+  left: 75% !important;
+  padding-bottom: 10px; }
+  .search-yt .selected-videos h3 {
+    color: #6E7592;
+    font-size: 1.25rem;
+    margin-top: 10px; }
+  .search-yt .selected-videos ul li {
+    font-size: 1rem;
+    color: #6E7592;
+    margin-bottom: 10px; }
+  .search-yt .selected-videos #js-view-new-playlist {
+    position: relative;
+    border-radius: 0;
+    border-width: 1px;
+    border-color: #6E7592;
+    border-image: none;
+    border-style: solid;
+    background-color: white;
+    color: #6E7592;
+    margin-top: 10px; }
+
 /*# sourceMappingURL=style.css.map */

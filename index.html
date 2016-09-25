@@ -27,9 +27,7 @@
         </div>
         <div class="row">
           <div class="col s6 offset-s3">
-            <div id="js-landing-search">
-              find a playlist...
-            </div>
+            <input id="js-landing-search" placeholder="find a playlist..."></input>
           </div>
         </div>
         <div class="row">
@@ -42,14 +40,14 @@
         <div class="row">
           <div class="col s4 offset-s4">
             <div id="js-create-playlist">
-              <a href="#"><h2>make your own</h2></a>
+              <a class="waves-effect waves-light btn" href="#"><h2>make your own</h2></a>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="disable search-playlists">
+    <div class="search-playlists">
       <div class="container">
         <div class="row">
           <div class="col s4">
@@ -58,10 +56,8 @@
         </div>
         <div class="row">
           <div class="col s6 offset-s3">
-            <div id="js-playlist-search">
-              find a playlist...
-            </div>
-            <button type="button" id="js-playlist-search-button">search</button>
+            <input type="text" class="z-depth-1" placeholder="find a playlist..." id="js-playlist-search"></input>
+            <a class="waves-effect btn" id="js-playlist-search-button">search</a>
           </div>
         </div>
         <div class="row">
@@ -117,7 +113,7 @@
       </div>
     </div>
 
-    <div class="opacity search-yt">
+    <div class="disable opacity search-yt">
       <div class="container">
         <div class="row">
           <div class="col s4">
@@ -178,7 +174,7 @@
       </div>
     </div>
 
-    <div class="playlist-review-send">
+    <div class="disable playlist-review-send">
       <div class="container">
         <div id="js-x-button">
           <span></span>
@@ -199,7 +195,7 @@
           <div class="col s3">
             <div class="send-column col s10">
               <div id="js-send-email">
-                <h2>send</h2>
+                <a class="waves-effect waves-light btn" href="#"><h2>send</h2></a>
               </div>
               <a href="#">
                 save without sending
@@ -245,6 +241,8 @@
 
     <!-- javascript/jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- materialize compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <!-- Local JS -->

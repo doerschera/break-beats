@@ -1,0 +1,11 @@
+.main {
+  margin: 2em auto;
+  padding: 2em;
+  overflow: auto;
+  width: 900px;
+}
+
+.Video-container {
+  float: left;
+  margin-right: 2%;
+}

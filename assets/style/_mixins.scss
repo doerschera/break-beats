@@ -50,6 +50,9 @@
   border-style: solid;
   background-color: white;
   color: $color;
+  height: auto;
+  line-height: 1.5;
+  text-transform: none;
 }
 
 @mixin playlist-display($color) {

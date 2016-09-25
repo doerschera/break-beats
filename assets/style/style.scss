@@ -27,7 +27,7 @@ body {
 
 :-ms-input-placeholder {
   color: white;
-  padding-left: 10px; 
+  padding-left: 10px;
 }
 
 a {
@@ -105,16 +105,16 @@ a {
     -webkit-box-shadow: 7px 7px 5px $magenta;
     -moz-box-shadow:    7px 7px 5px $magenta;
     box-shadow:         7px 7px 5px $magenta;
-    h4, h5 {
+    h4 {
       color: $magenta;
-    }
-    h5 {
-      font-size: 1.5rem;
-      word-spacing: 10px;
     }
     #js-view-playlist  {
       @include small-button($magenta);
       top: 90px;
+    }
+    .chip {
+      background-color: $magenta;
+      color: white;
     }
   }
 }

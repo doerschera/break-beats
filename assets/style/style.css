@@ -128,11 +128,8 @@ a {
   -webkit-box-shadow: 7px 7px 5px #AB537F;
   -moz-box-shadow: 7px 7px 5px #AB537F;
   box-shadow: 7px 7px 5px #AB537F; }
-  .search-playlists .playlist-hover h4, .search-playlists .playlist-hover h5 {
+  .search-playlists .playlist-hover h4 {
     color: #AB537F; }
-  .search-playlists .playlist-hover h5 {
-    font-size: 1.5rem;
-    word-spacing: 10px; }
   .search-playlists .playlist-hover #js-view-playlist {
     position: relative;
     border-radius: 0;
@@ -142,7 +139,13 @@ a {
     border-style: solid;
     background-color: white;
     color: #AB537F;
+    height: auto;
+    line-height: 1.5;
+    text-transform: none;
     top: 90px; }
+  .search-playlists .playlist-hover .chip {
+    background-color: #AB537F;
+    color: white; }
 
 .search-yt #js-yt-search {
   margin-top: 150px;
@@ -193,6 +196,9 @@ a {
     border-style: solid;
     background-color: white;
     color: #6E7592;
+    height: auto;
+    line-height: 1.5;
+    text-transform: none;
     margin-top: 10px; }
 
 .playlist-review-send {
@@ -252,6 +258,9 @@ a {
     border-style: solid;
     background-color: white;
     color: #92C6DE;
+    height: auto;
+    line-height: 1.5;
+    text-transform: none;
     float: right;
     margin-top: 5px; }
   .playlist-review-send #js-user-tags {

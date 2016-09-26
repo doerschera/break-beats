@@ -36,12 +36,18 @@ var BB = (function() {
       $listContainer = $('#js-selected-list'),
 			$landingSearch = $('#js-landing-search'),
       $ytSearchInput = $('#js-yt-search'),
+			$viewNewPlaylist = $('#js-view-new-playlist'),
       $saveButton = $('.save-playlist'),
-      $playlistName = $('.playlist-name'),
+			$sendButton = $('#js-send-email'),
+      $playlistName = $('#js-playlist-name'),
+			$newTags = $('#js-user-tags'),
+			$addTag = $('#js-add-tag-button'),
+			$removeTag = $('.remove-tag'),
       query,
       searchTerm,
       videoId,
       titles = [],
+			userTags = [],
       checkedBoxes,
       maxResults = 10,
       paginationData;
@@ -58,15 +64,23 @@ var BB = (function() {
 	    }
 
 	  }
+		function renderNewTags(tag) {
+			$newTags.append(tag);
+		}
 
 	// DOM show/hide
 		function hideLanding(pageToShow) {
 			$('.landing-page').addClass('disable');
 			$(pageToShow).removeClass('disable');
 		}
+		function reviewAndSend() {
+			$('.search-yt').addClass('opacity');
+			$('.playlist-review-send').removeClass('disable');
+		}
 
 	// bind events
 	  $ytSearch.on('click', doSearch);
+		$sendButton.on('click', getTitle);
 	  $saveButton.on('click', getTitle);
 		$createPlaylist.on('click', function() {
 			hideLanding('.search-yt');
@@ -74,6 +88,10 @@ var BB = (function() {
 		$landingSearch.on('click', function() {
 			hideLanding('.search-playlists');
 		});
+		$viewNewPlaylist.on('click', reviewAndSend);
+		$addTag.on('click', addTag);
+		$removeTag.on('chip.delete', removeTag);
+
 
 
 
@@ -180,7 +198,7 @@ var BB = (function() {
   }
 
   function enableSelection() {
-    checkedBoxes = $(document).find('.checkbox');
+    checkedBoxes = $(document).find('.radio');
     for(var i = 0; i < checkedBoxes.length; i++) {
       if( checkedBoxes[i].disabled == true) {
         checkedBoxes[i].disabled = false;
@@ -203,6 +221,22 @@ var BB = (function() {
     return false;
   }
 
+	function addTag() {
+		var newTag = $('#js-add-tags').val().trim();
+		var newChip =$('<div class="chip">'+newTag+'</div>');
+		var iTag = $('<i class="close material-icons remove-tag">close</i>');
+		newChip.append(iTag);
+		$('#js-user-tags').append(newChip);
+
+		userTags.push(newTag);
+		console.log(userTags);
+	}
+
+	function removeTag() {
+		var tag = $(this).parent().html();
+		console.log(tag);
+	}
+
   function saveToFirebase(playlistName, video) {
     // add to firebase
     // firebase.database().ref('/playlists/'+playlistName).update({
@@ -213,7 +247,8 @@ var BB = (function() {
     vimg = video.image;
     playlistsRef.child(playlistName).push({
         videoId: vid,
-        defaultImg: vimg
+        defaultImg: vimg,
+				tags: userTags
     });
   }
 

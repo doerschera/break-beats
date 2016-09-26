@@ -46,6 +46,7 @@ var BB = (function() {
       $saveButton = $('.save-playlist'),
 			$sendButton = $('#js-send-email'),
       $playlistName = $('#js-playlist-name'),
+			$playlistVideoContainer = $('#js-video-list'),
 			$newTags = $('#js-user-tags'),
 			$addTag = $('#js-add-tag-button'),
 			$removeTag = $('.chip'),
@@ -73,6 +74,20 @@ var BB = (function() {
 		function renderNewTags(tag) {
 			$newTags.append(tag);
 		}
+		function renderNewPlaylist() {
+			for(var i = 0; i < titles.length; i++) {
+				var title = titles[i].title;
+				var image = titles[i].image;
+
+				var $li = $('<li>');
+				var $wrapperDiv = $('<div class="col s12"></div>');
+				$wrapperDiv.append('<img class="col s3" src='+image+' />');
+				$wrapperDiv.append('<p class="flow-text col s9">'+title+'</p>');
+				$li.append($wrapperDiv);
+				$playlistVideoContainer.append($li);
+
+			}
+		}
 
 	// DOM show/hide
 		function hideLanding(pageToShow) {
@@ -94,7 +109,10 @@ var BB = (function() {
 		$landingSearch.on('click', function() {
 			hideLanding('.search-playlists');
 		});
-		$viewNewPlaylist.on('click', reviewAndSend);
+		$viewNewPlaylist.on('click', function() {
+			reviewAndSend();
+			renderNewPlaylist();
+		});
 		$addTag.on('click', addTag);
 		$(document).on('click', '.close', removeTag);
 
@@ -168,7 +186,7 @@ var BB = (function() {
 
   function addVideoToPlaylist() {
     if ( $(this).is(":checked") ) {
-				console.log('checked');
+
         videoTitle  = $(this).data('title');
         videoId     = $(this).attr('id');
         videoImg    = $(this).data('image');

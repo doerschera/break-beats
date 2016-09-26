@@ -98,7 +98,8 @@ a {
   position: relative;
   padding: 0;
   background-color: white;
-  border: solid 1px #AB537F; }
+  border: solid 1px #AB537F;
+  box-sizing: border-box; }
   .search-playlists .playlist-results .content-wrapper h3 {
     padding-left: 10px;
     font-size: 1.75rem;
@@ -111,8 +112,14 @@ a {
     .search-playlists .playlist-results .content-wrapper ul li {
       padding: 5px;
       background-color: white; }
+      .search-playlists .playlist-results .content-wrapper ul li div {
+        margin: 10px 0;
+        padding-bottom: 15px; }
+        .search-playlists .playlist-results .content-wrapper ul li div:nth-child(odd) {
+          border-top: solid 1px #AB537F;
+          border-bottom: solid 1px #AB537F; }
       .search-playlists .playlist-results .content-wrapper ul li img {
-        padding: 15px 0;
+        margin-top: 15px;
         vertical-align: middle;
         display: inline-block;
         width: 100%; }
@@ -243,6 +250,7 @@ a {
     padding: 0;
     background-color: white;
     border: solid 1px #92C6DE;
+    box-sizing: border-box;
     -webkit-box-shadow: 7px 7px 5px #92C6DE;
     -moz-box-shadow: 7px 7px 5px #92C6DE;
     box-shadow: 7px 7px 5px #92C6DE; }
@@ -258,8 +266,14 @@ a {
       .playlist-review-send .playlist-display ul li {
         padding: 5px;
         background-color: white; }
+        .playlist-review-send .playlist-display ul li div {
+          margin: 10px 0;
+          padding-bottom: 15px; }
+          .playlist-review-send .playlist-display ul li div:nth-child(odd) {
+            border-top: solid 1px #92C6DE;
+            border-bottom: solid 1px #92C6DE; }
         .playlist-review-send .playlist-display ul li img {
-          padding: 15px 0;
+          margin-top: 15px;
           vertical-align: middle;
           display: inline-block;
           width: 100%; }

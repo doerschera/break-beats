@@ -67,6 +67,7 @@
   padding: 0;
   background-color: white;
   border: solid 1px $color;
+  box-sizing: border-box;
   h3 {
     padding-left: 10px;
     font-size: 1.75rem;
@@ -81,8 +82,17 @@
       padding: 5px;
       background-color: white;
       // border-bottom: solid 1px $dark-grey;
+      div {
+        margin: 10px 0;
+        padding-bottom: 15px;
+        &:nth-child(odd) {
+          border-top: solid 1px $color;
+          border-bottom: solid 1px $color;
+        }
+      }
+
       img {
-        padding: 15px 0;
+        margin-top: 15px;
         vertical-align: middle;
         display: inline-block;
         width: 100%;

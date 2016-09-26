@@ -62,6 +62,7 @@ a {
   }
   #js-landing-search {
     @include big-search-bar(80px, $blue-grey, white);
+    position: relative;
   }
   .or-statement {
     position: relative;
@@ -83,6 +84,7 @@ a {
 }
 
 .search-playlists {
+  display: none;
   #js-playlist-search {
     @include big-search-bar(150px, $magenta, $magenta);
     position: relative;

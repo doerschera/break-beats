@@ -38,6 +38,7 @@ var BB = (function() {
   // cache DOM
   var $createPlaylist = $('#js-create-playlist'),
 			$ytSearch = $('#js-yt-search-button'),
+			$playlistSearch = $('#js-playlist-search'),
       $videosContainer = $('.yt-results'),
       $listContainer = $('#js-selected-list'),
 			$landingSearch = $('#js-landing-search'),
@@ -92,8 +93,13 @@ var BB = (function() {
 
 	// DOM show/hide
 		function hideLanding(pageToShow) {
-			$('.landing-page').addClass('disable');
 			$(pageToShow).removeClass('disable');
+			$landingSearch.animate({top: '-150px'}, 'slow', function() {
+				$('.landing-page').hide();
+				$(pageToShow).show();
+			});
+			$playlistSearch.select();
+
 		}
 		function reviewAndSend() {
 			$('.search-yt').addClass('opacity');

@@ -51,7 +51,8 @@ a {
     margin-bottom: 0;
     background-color: #6E7592;
     border: solid 1px white;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.16); }
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
+    position: relative; }
   .landing-page .or-statement {
     position: relative; }
   .landing-page .line-emphasis {

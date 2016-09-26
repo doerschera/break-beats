@@ -33,7 +33,7 @@ var BB = (function() {
   var $createPlaylist = $('#js-create-playlist'),
 			$ytSearch = $('#js-yt-search-button'),
       $videosContainer = $('.yt-results'),
-      $listContainer = $('.Selected-list'),
+      $listContainer = $('#js-selected-list'),
 			$landingSearch = $('#js-landing-search'),
       $ytSearchInput = $('#js-yt-search'),
       $saveButton = $('.save-playlist'),
@@ -54,7 +54,7 @@ var BB = (function() {
 	    $listContainer.html('');
 	    for(var i = 0; i < titles.length; i++) {
 
-	      $listContainer.append('<h3>'+ titles[i].title +'<h3>');
+	      $listContainer.append('<li>'+ titles[i].title +'<li>');
 	    }
 
 	  }
@@ -109,7 +109,7 @@ var BB = (function() {
 	      frameborder: '0'
 	    });
 	    // var checkbox = '<label class="checkbox" for="' + videoId + '"><input type="checkbox" checked="checked" value="" id="' + videoId + '" data-toggle="checkbox" class="custom-checkbox"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span></label>';
-	    var checkbox = '<input type="radio" class="with-gap" id=' + item.id.videoId + ' data-title="' + item.snippet.title + '" data-image="' + item.snippet.thumbnails.default.url + '" />';
+	    var checkbox = '<input type="radio" class="with-gap radio" id=' + item.id.videoId + ' data-title="' + item.snippet.title + '" data-image="' + item.snippet.thumbnails.default.url + '" />';
 			var label = '<label for='+item.id.videoId+'></label>';
 	    videoContainer.append(video).append(checkbox).append(label);
 	    renderVideos(videoContainer);
@@ -140,11 +140,11 @@ var BB = (function() {
 
 
 
-  $(document).on('change', '.checkbox', addVideoToPlaylist);
+  $(document).on('change', '.radio', addVideoToPlaylist);
 
   function addVideoToPlaylist() {
     if ( $(this).is(":checked") ) {
-
+				console.log('checked');
         videoTitle  = $(this).data('title');
         videoId     = $(this).attr('id');
         videoImg    = $(this).data('image');
@@ -169,7 +169,7 @@ var BB = (function() {
   }
 
   function disableSelectionIfPlaylistFull() {
-    checkedBoxes = $(document).find('.checkbox');
+    checkedBoxes = $(document).find('.radio');
     if ( titles.length > 2 ) {
       for(var i = 0; i < checkedBoxes.length; i++) {
         if( checkedBoxes[i].checked == false) {

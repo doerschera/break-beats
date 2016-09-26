@@ -30,9 +30,11 @@ var BB = (function() {
 	 * ---------------------------------------- */
 
   // cache DOM
-  var $submitButton = $('#submit'),
+  var $createPlaylist = $('#js-create-playlist'),
+			$submitButton = $('#submit'),
       $videosContainer = $('#player'),
       $listContainer = $('.Selected-list'),
+			$landingSearch = $('#js-landing-search'),
       $searchInput = $('#search-input'),
       $saveButton = $('.save-playlist'),
       $playlistName = $('.playlist-name'),
@@ -54,13 +56,24 @@ var BB = (function() {
 
 	      $listContainer.append('<h3>'+ titles[i].title +'<h3>');
 	    }
-	    
+
 	  }
 
+	// DOM show/hide
+		function hideLanding(pageToShow) {
+			$('.landing-page').addClass('disable');
+			$(pageToShow).removeClass('disable');
+		}
 
 	// bind events
 	  $submitButton.on('click', doSearch);
 	  $saveButton.on('click', getTitle);
+		$createPlaylist.on('click', function() {
+			hideLanding('.search-yt');
+		});
+		$landingSearch.on('click', function() {
+			hideLanding('.search-playlists');
+		});
 
 
 
@@ -135,8 +148,8 @@ var BB = (function() {
         videoId     = $(this).attr('id');
         videoImg    = $(this).data('image');
         titles.push({
-          'title': videoTitle, 
-          'image': videoImg, 
+          'title': videoTitle,
+          'image': videoImg,
           'videoId': videoId
         });
         renderSelectedTitles(titles);
@@ -200,9 +213,9 @@ var BB = (function() {
     playlistsRef.child(playlistName).push({
         videoId: vid,
         defaultImg: vimg
-    });    
+    });
   }
-  
+
   console.log(titles);
 
 

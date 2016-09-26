@@ -43,7 +43,7 @@ var BB = (function() {
       videoId,
       titles = [],
       checkedBoxes,
-      maxResults = 5,
+      maxResults = 10,
       paginationData;
 
 	// render DOM
@@ -103,14 +103,15 @@ var BB = (function() {
 	    var videoContainer = $('<div>').addClass('video col s6');
 	    var video = $('<iframe />', {
 	      class: 'Video-iframe Video-iframe--loading',
-	      width: '400',
-	      height: '225',
+	      width: '100%',
+				height: '100%',
 	      src: 'https://www.youtube.com/embed/'+item.id.videoId+'?rel=0',
 	      frameborder: '0'
 	    });
 	    // var checkbox = '<label class="checkbox" for="' + videoId + '"><input type="checkbox" checked="checked" value="" id="' + videoId + '" data-toggle="checkbox" class="custom-checkbox"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span></label>';
 	    var checkbox = '<input type="radio" class="with-gap" id=' + item.id.videoId + ' data-title="' + item.snippet.title + '" data-image="' + item.snippet.thumbnails.default.url + '" />';
-	    videoContainer.append(video).append(checkbox);
+			var label = '<label for='+item.id.videoId+'></label>';
+	    videoContainer.append(video).append(checkbox).append(label);
 	    renderVideos(videoContainer);
 	  }
 

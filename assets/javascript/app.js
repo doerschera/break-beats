@@ -50,6 +50,7 @@ var BB = (function() {
 			$newTags = $('#js-user-tags'),
 			$addTag = $('#js-add-tag-button'),
 			$removeTag = $('.chip'),
+			$close = $('#js-close-send-review'),
       query,
       searchTerm,
       videoId,
@@ -98,6 +99,10 @@ var BB = (function() {
 			$('.search-yt').addClass('opacity');
 			$('.playlist-review-send').removeClass('disable');
 		}
+		function closeReviewSend() {
+			$('.playlist-review-send').addClass('disable');
+			$('.search-yt').removeClass('opacity');
+		}
 
 	// bind events
 	  $ytSearch.on('click', doSearch);
@@ -114,7 +119,8 @@ var BB = (function() {
 			renderNewPlaylist();
 		});
 		$addTag.on('click', addTag);
-		$(document).on('click', '.close', removeTag);
+		$(document).on('click', '.remove-tag', removeTag);
+		$close.on('click', closeReviewSend);
 
 
 

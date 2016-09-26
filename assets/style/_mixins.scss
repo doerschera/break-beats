@@ -64,6 +64,7 @@
 
 @mixin playlist-display($color) {
   position: relative;
+  bottom: 60px;
   padding: 0;
   background-color: white;
   border: solid 1px $color;

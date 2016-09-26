@@ -96,6 +96,7 @@ a {
   text-transform: none; }
 .search-playlists .playlist-results .content-wrapper {
   position: relative;
+  bottom: 60px;
   padding: 0;
   background-color: white;
   border: solid 1px #AB537F;
@@ -230,6 +231,8 @@ a {
     .playlist-review-send #js-playlist-name:focus, .playlist-review-send #js-email-address:focus, .playlist-review-send #js-add-tags:focus {
       border: none;
       box-shadow: none; }
+  .playlist-review-send #js-email-address, .playlist-review-send #js-add-tags, .playlist-review-send #js-add-tag-button {
+    margin-left: 20px; }
   .playlist-review-send .send-column {
     text-align: center; }
     .playlist-review-send .send-column #js-send-email .btn {
@@ -247,6 +250,7 @@ a {
       text-align: center; }
   .playlist-review-send .playlist-display {
     position: relative;
+    bottom: 60px;
     padding: 0;
     background-color: white;
     border: solid 1px #92C6DE;
@@ -298,7 +302,8 @@ a {
     float: right;
     margin-top: 5px; }
   .playlist-review-send #js-user-tags {
-    margin-top: 50px; }
+    margin-top: 50px;
+    margin-left: 20px; }
     .playlist-review-send #js-user-tags .chip {
       text-align: center;
       background-color: #92C6DE;

@@ -173,6 +173,9 @@ a {
   #js-playlist-name, #js-email-address, #js-add-tags {
     @include small-search-bar($light-blue);
   }
+  #js-email-address, #js-add-tags, #js-add-tag-button {
+    margin-left: 20px;
+  }
   .send-column {
     text-align: center;
     #js-send-email {
@@ -197,6 +200,7 @@ a {
   }
   #js-user-tags {
     margin-top: 50px;
+    margin-left: 20px;
     .chip {
       text-align: center;
       background-color: $light-blue;

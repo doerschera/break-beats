@@ -25,6 +25,12 @@ var BB = (function() {
 	    }
 	  });
 
+	/*--------------------------------------------
+	 * Initialize materialize chips
+	 * ---------------------------------------- */
+
+	//  $('#js-user-tags').material_chip();
+
 	/* -------------------------------------------
 	 * Bild DOM
 	 * ---------------------------------------- */
@@ -42,7 +48,7 @@ var BB = (function() {
       $playlistName = $('#js-playlist-name'),
 			$newTags = $('#js-user-tags'),
 			$addTag = $('#js-add-tag-button'),
-			$removeTag = $('.remove-tag'),
+			$removeTag = $('.chip'),
       query,
       searchTerm,
       videoId,
@@ -90,7 +96,7 @@ var BB = (function() {
 		});
 		$viewNewPlaylist.on('click', reviewAndSend);
 		$addTag.on('click', addTag);
-		$removeTag.on('chip.delete', removeTag);
+		$(document).on('click', '.close', removeTag);
 
 
 
@@ -233,8 +239,11 @@ var BB = (function() {
 	}
 
 	function removeTag() {
-		var tag = $(this).parent().html();
-		console.log(tag);
+		var tag = $(this).parent().text();
+		tag = tag.replace(/close/i, "");
+		var index = userTags.indexOf(tag);
+		userTags.splice(index, 1);
+		console.log(userTags);
 	}
 
   function saveToFirebase(playlistName, video) {

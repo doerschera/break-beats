@@ -31,11 +31,11 @@ var BB = (function() {
 
   // cache DOM
   var $createPlaylist = $('#js-create-playlist'),
-			$submitButton = $('#submit'),
-      $videosContainer = $('#player'),
+			$ytSearch = $('#js-yt-search-button'),
+      $videosContainer = $('.yt-results'),
       $listContainer = $('.Selected-list'),
 			$landingSearch = $('#js-landing-search'),
-      $searchInput = $('#search-input'),
+      $ytSearchInput = $('#js-yt-search'),
       $saveButton = $('.save-playlist'),
       $playlistName = $('.playlist-name'),
       query,
@@ -66,7 +66,7 @@ var BB = (function() {
 		}
 
 	// bind events
-	  $submitButton.on('click', doSearch);
+	  $ytSearch.on('click', doSearch);
 	  $saveButton.on('click', getTitle);
 		$createPlaylist.on('click', function() {
 			hideLanding('.search-yt');
@@ -79,7 +79,7 @@ var BB = (function() {
 
 	// search function
 	  function doSearch() {
-	    searchTerm = $searchInput.val().replace(/ /g, '+');
+	    searchTerm = $ytSearchInput.val().replace(/ /g, '+');
 	    query = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=' + maxResults + '&order=viewCount&q="' + searchTerm + '"&type=video&key=AIzaSyDIE0dd7hZ5j4vQRtwrU0CwQLGq-lhXWCc';
 	    getDatafromAPI(query);
 	    return false;
@@ -100,7 +100,7 @@ var BB = (function() {
 
 	// create iframe fucntion from data
 	  function createIframe(item) {
-	    var videoContainer = $('<div>').addClass('Video-container');
+	    var videoContainer = $('<div>').addClass('video col s6');
 	    var video = $('<iframe />', {
 	      class: 'Video-iframe Video-iframe--loading',
 	      width: '400',
@@ -109,7 +109,7 @@ var BB = (function() {
 	      frameborder: '0'
 	    });
 	    // var checkbox = '<label class="checkbox" for="' + videoId + '"><input type="checkbox" checked="checked" value="" id="' + videoId + '" data-toggle="checkbox" class="custom-checkbox"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span></label>';
-	    var checkbox = '<input type="checkbox" class="checkbox" id=' + item.id.videoId + ' data-title="' + item.snippet.title + '" data-image="' + item.snippet.thumbnails.default.url + '" class="checkbox" />';
+	    var checkbox = '<input type="radio" class="with-gap" id=' + item.id.videoId + ' data-title="' + item.snippet.title + '" data-image="' + item.snippet.thumbnails.default.url + '" />';
 	    videoContainer.append(video).append(checkbox);
 	    renderVideos(videoContainer);
 	  }

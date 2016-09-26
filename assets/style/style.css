@@ -97,28 +97,30 @@ a {
 .search-playlists .playlist-results .content-wrapper {
   position: relative;
   padding: 0;
-  background-color: #E6E7E8;
+  background-color: white;
   border: solid 1px #AB537F; }
   .search-playlists .playlist-results .content-wrapper h3 {
     padding-left: 10px;
     font-size: 1.75rem;
     margin-bottom: 0;
-    border-bottom: solid 1px #b3b3b3; }
+    text-align: center;
+    border-bottom: solid 1px #AB537F;
+    color: #AB537F; }
   .search-playlists .playlist-results .content-wrapper ul {
     margin: 0; }
     .search-playlists .playlist-results .content-wrapper ul li {
       padding: 5px;
-      background-color: white;
-      border-bottom: solid 1px #b3b3b3; }
+      background-color: white; }
       .search-playlists .playlist-results .content-wrapper ul li img {
+        padding: 15px 0;
         vertical-align: middle;
         display: inline-block;
-        width: 32px; }
+        width: 100%; }
       .search-playlists .playlist-results .content-wrapper ul li p {
         display: inline-block;
         padding-left: 10px;
         font-size: 1rem;
-        color: #E6E7E8; }
+        color: #AB537F; }
 .search-playlists .playlist-hover {
   position: absolute;
   bottom: 0px;
@@ -239,7 +241,7 @@ a {
   .playlist-review-send .playlist-display {
     position: relative;
     padding: 0;
-    background-color: #E6E7E8;
+    background-color: white;
     border: solid 1px #92C6DE;
     -webkit-box-shadow: 7px 7px 5px #92C6DE;
     -moz-box-shadow: 7px 7px 5px #92C6DE;
@@ -248,22 +250,24 @@ a {
       padding-left: 10px;
       font-size: 1.75rem;
       margin-bottom: 0;
-      border-bottom: solid 1px #b3b3b3; }
+      text-align: center;
+      border-bottom: solid 1px #92C6DE;
+      color: #92C6DE; }
     .playlist-review-send .playlist-display ul {
       margin: 0; }
       .playlist-review-send .playlist-display ul li {
         padding: 5px;
-        background-color: white;
-        border-bottom: solid 1px #b3b3b3; }
+        background-color: white; }
         .playlist-review-send .playlist-display ul li img {
+          padding: 15px 0;
           vertical-align: middle;
           display: inline-block;
-          width: 32px; }
+          width: 100%; }
         .playlist-review-send .playlist-display ul li p {
           display: inline-block;
           padding-left: 10px;
           font-size: 1rem;
-          color: #E6E7E8; }
+          color: #92C6DE; }
   .playlist-review-send #js-add-tag-button {
     position: relative;
     border-radius: 0;

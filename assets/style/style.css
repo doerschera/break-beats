@@ -95,37 +95,39 @@ a {
   height: auto;
   line-height: 42px;
   text-transform: none; }
-.search-playlists .playlist-results .content-wrapper {
+.search-playlists .playlist-results {
   position: relative;
   bottom: 60px;
   padding: 0;
   background-color: white;
   border: solid 1px #AB537F;
-  box-sizing: border-box; }
-  .search-playlists .playlist-results .content-wrapper h3 {
+  box-sizing: border-box;
+  border: none;
+  margin-top: 50px; }
+  .search-playlists .playlist-results h3 {
     padding-left: 10px;
     font-size: 1.75rem;
     margin-bottom: 0;
     text-align: center;
     border-bottom: solid 1px #AB537F;
     color: #AB537F; }
-  .search-playlists .playlist-results .content-wrapper ul {
+  .search-playlists .playlist-results ul {
     margin: 0; }
-    .search-playlists .playlist-results .content-wrapper ul li {
+    .search-playlists .playlist-results ul li {
       padding: 5px;
       background-color: white; }
-      .search-playlists .playlist-results .content-wrapper ul li div {
+      .search-playlists .playlist-results ul li div {
         margin: 10px 0;
         padding-bottom: 15px; }
-        .search-playlists .playlist-results .content-wrapper ul li div:nth-child(odd) {
+        .search-playlists .playlist-results ul li div:nth-child(odd) {
           border-top: solid 1px #AB537F;
           border-bottom: solid 1px #AB537F; }
-      .search-playlists .playlist-results .content-wrapper ul li img {
+      .search-playlists .playlist-results ul li img {
         margin-top: 15px;
         vertical-align: middle;
         display: inline-block;
         width: 100%; }
-      .search-playlists .playlist-results .content-wrapper ul li p {
+      .search-playlists .playlist-results ul li p {
         display: inline-block;
         padding-left: 10px;
         font-size: 1rem;

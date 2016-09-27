@@ -84,7 +84,6 @@ a {
 }
 
 .search-playlists {
-  display: none;
   #js-playlist-search {
     @include big-search-bar(150px, $magenta, $magenta);
     position: relative;
@@ -93,10 +92,10 @@ a {
     @include big-button($magenta);
   }
   .playlist-results {
-    .content-wrapper {
-      @include playlist-display($magenta);
-      }
-    }
+    @include playlist-display($magenta);
+    border: none;
+    margin-top: 50px;
+  }
   .playlist-hover {
     position: absolute;
     bottom: 0px;

@@ -16,20 +16,14 @@ var BB = (function() {
 	  var dbRef = firebase.database().ref();
 	// create a reference to the 'links' child inside db
 	  playlistsRef = dbRef.child('playlists');
-	  console.log(playlistsRef);
-
-	  playlistsRef.on('value', function(snapshot) {
-	    var playlists = snapshot.val();
-	    for(var playlist in playlists) {
-	      console.log(atob(playlist));
-	    }
-	  });
+	// create a reference to the 'tags' child
+    var tagsRef = dbRef.child('tags');
 
 	/*--------------------------------------------
-	 * Initialize materialize chips
+	 * email init
 	 * ---------------------------------------- */
 
-	//  $('#js-user-tags').material_chip();
+	emailjs.init("user_xrCuLVJF1XPydVeSaCraO");
 
 	/* -------------------------------------------
 	 * Bild DOM
@@ -39,6 +33,7 @@ var BB = (function() {
   var $createPlaylist = $('#js-create-playlist'),
 			$ytSearch = $('#js-yt-search-button'),
 			$playlistSearch = $('#js-playlist-search'),
+			$playlistSearchButton = $('#js-playlist-search-button'),
       $videosContainer = $('.yt-results'),
       $listContainer = $('#js-selected-list'),
 			$landingSearch = $('#js-landing-search'),
@@ -46,12 +41,13 @@ var BB = (function() {
 			$viewNewPlaylist = $('#js-view-new-playlist'),
       $saveButton = $('.save-playlist'),
 			$sendButton = $('#js-send-email'),
-      $playlistName = $('#js-playlist-name'),
+      $playlistTitle = $('#js-playlist-name'),
 			$playlistVideoContainer = $('#js-video-list'),
 			$newTags = $('#js-user-tags'),
 			$addTag = $('#js-add-tag-button'),
 			$removeTag = $('.chip'),
 			$close = $('#js-close-send-review'),
+			$magenta = '#AB537F',
       query,
       searchTerm,
       videoId,
@@ -59,6 +55,7 @@ var BB = (function() {
 			userTags = [],
       checkedBoxes,
       maxResults = 10,
+			videoCounter = 0,
       paginationData;
 
 	// render DOM
@@ -68,7 +65,6 @@ var BB = (function() {
 	  function renderSelectedTitles(titles) {
 	    $listContainer.html('');
 	    for(var i = 0; i < titles.length; i++) {
-
 	      $listContainer.append('<li>'+ titles[i].title +'<li>');
 	    }
 
@@ -83,8 +79,8 @@ var BB = (function() {
 
 				var $li = $('<li>');
 				var $wrapperDiv = $('<div class="col s12"></div>');
-				$wrapperDiv.append('<img class="col s3" src='+image+' />');
-				$wrapperDiv.append('<p class="flow-text col s9">'+title+'</p>');
+				$wrapperDiv.append('<img class="col s6" src='+image+' />');
+				$wrapperDiv.append('<p class="flow-text col s6">'+title+'</p>');
 				$li.append($wrapperDiv);
 				$playlistVideoContainer.append($li);
 
@@ -92,15 +88,10 @@ var BB = (function() {
 		}
 
 	// DOM show/hide
-		function hideLanding(pageToShow) {
-			$(pageToShow).removeClass('disable');
-			$landingSearch.animate({top: '-150px'}, 'slow', function() {
-				$('.landing-page').hide();
-				$(pageToShow).show();
-			});
-			$playlistSearch.select();
-
-		}
+	function hideLanding(pageToShow) {
+		$('.landing-page').addClass('disable');
+		$(pageToShow).removeClass('disable');
+	}
 		function reviewAndSend() {
 			$('.search-yt').addClass('opacity');
 			$('.playlist-review-send').removeClass('disable');
@@ -112,8 +103,8 @@ var BB = (function() {
 
 	// bind events
 	  $ytSearch.on('click', doSearch);
-		$sendButton.on('click', getTitle);
-	  $saveButton.on('click', getTitle);
+		$sendButton.on('click', getPlaylistTitle);
+	  $saveButton.on('click', getPlaylistTitle);
 		$createPlaylist.on('click', function() {
 			hideLanding('.search-yt');
 		});
@@ -127,6 +118,7 @@ var BB = (function() {
 		$addTag.on('click', addTag);
 		$(document).on('click', '.remove-tag', removeTag);
 		$close.on('click', closeReviewSend);
+		$playlistSearchButton.on('click', searchTags);
 
 
 
@@ -145,15 +137,22 @@ var BB = (function() {
 	      method: 'GET'
 	    }).done( data => {
 	      // videoId = data[0].id.videoId;
-	      console.log(data.items);
 	      for(var i = 0; i < data.items.length; i++) {
 	        createIframe(data.items[i]);
 	      }
 	    });
 	  }
 
-	// create iframe fucntion from data
-	  function createIframe(item) {
+		function clearAllResults() {
+	    $videosContainer.empty();
+	    return false;
+	  }
+
+		/* -------------------------------------------
+	   * create iframe function from data
+	   * ---------------------------------------- */
+
+		function createIframe(item) {
 	    var videoContainer = $('<div>').addClass('video col s6');
 	    var video = $('<iframe />', {
 	      class: 'Video-iframe Video-iframe--loading',
@@ -168,6 +167,37 @@ var BB = (function() {
 	    videoContainer.append(video).append(checkbox).append(label);
 	    renderVideos(videoContainer);
 	  }
+
+		function createImage(item) {
+			var imgContainer = $('<div>').addClass('Image-container grid-flex-cell-1of2');
+			var title = '<h5>' + item.snippet.title + '</h5>'
+			var image = $('<img>', {
+				class: 'Image',
+				width: '400',
+				height: '225',
+				src: item.snippet.thumbnails.default.url
+			});
+			var checkbox = '<input type="checkbox" class="checkbox" id=' + item.id.videoId + ' data-title="' + item.snippet.title + '" data-image="' + item.snippet.thumbnails.default.url + '" class="checkbox" />';
+			imgContainer.prepend(title).append(image).append(checkbox);
+			renderVideos(imgContainer);
+		}
+
+
+		// internal tag search
+		function searchResultsTitle(title) {
+			var h3 = $("<h3>"+title+"</h3>");
+			$('.playlist-results > ul').append(h3);
+		}
+
+		function searchResultsList(image, title) {
+			var $li = $('<li>');
+			var $wrapperDiv = $('<div class="playlist-display col s12"></div>');
+			$wrapperDiv.append('<img class="col s6" src='+image+' />');
+			$wrapperDiv.append('<p class="flow-text col s6">'+title+'</p>');
+			$li.append($wrapperDiv);
+			$('.playlist-results > ul').append($li);
+			$('.playlist-results').css('border', 'solid 1px '+$magenta);
+		}
 
 
 
@@ -249,11 +279,33 @@ var BB = (function() {
    * ---------------------------------------- */
 
 
-  function getTitle() {
-    var playlistName = btoa($playlistName.val().trim());
+  function getPlaylistTitle() {
+    var playlistTitle = $playlistTitle.val().trim();
+    var tags = userTags;
+
+    var newPlaylist = playlistsRef.push().key;
+    playlistsRef.child('/'+newPlaylist+'/').update(
+      {
+        'vtitle': playlistTitle,
+        'vtags': tags
+      });
+
     for(i = 0; i < titles.length; i++) {
-      saveToFirebase(playlistName, titles[i]);
+      saveToFirebase(newPlaylist, titles[i]);
     }
+
+    // var emailAddress = $emailAddress.val().trim();
+    // sendEmail(emailAddress, newPlaylist);
+
+
+    // global tag array
+    // for(i = 0; i < tags.length; i++) {
+    //   tagsRef.child('/'+tags[i]+'/').set({
+    //     'tags': 'tag'
+    //   });
+    // }
+
+
     return false;
   }
 
@@ -277,21 +329,44 @@ var BB = (function() {
 	}
 
   function saveToFirebase(playlistName, video) {
-    // add to firebase
-    // firebase.database().ref('/playlists/'+playlistName).update({
-    //   videoId: selectedVideoId,
-    //   defaultImg: selectedVideoImg
-    // });
     vid = video.videoId;
     vimg = video.image;
-    playlistsRef.child(playlistName).push({
+		vtitle = titles[videoCounter].title
+		playlistsRef.child('/'+playlistName+'/videos').child(videoCounter).update({
         videoId: vid,
         defaultImg: vimg,
-				tags: userTags
+				videoTitle: vtitle
     });
+		videoCounter ++
   }
 
   console.log(titles);
 
+	function searchTags() {
+		playlistsRef.once('value').then(function(snapshot) {
+			var tagSearch = $playlistSearch.val().trim()
+			console.log(tagSearch);
+			var numChildren = snapshot.numChildren();
+
+			snapshot.forEach(function(childSnapshot) {
+				var playlist = childSnapshot.val();
+				var tags = playlist.vtags;
+				var videos = playlist.videos;
+
+				if(tags.indexOf(tagSearch) != -1) {
+					console.log(true);
+					var title = playlist.vtitle;
+					searchResultsTitle(title)
+					for(var i = 0; i < 3; i++) {
+						var defaultImg = videos[i].defaultImg;
+						var videoId = videos[i].videoId;
+						var videoTitle = videos[i].videoTitle;
+						searchResultsList(defaultImg, videoTitle);
+					}
+				}
+
+			})
+		})
+	}
 
 })();

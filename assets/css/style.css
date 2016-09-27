@@ -1,11 +1,15 @@
-.main {
-  margin: 2em auto;
-  padding: 2em;
-  overflow: auto;
-  width: 900px;
+body {
+  padding: 3em;
+}
+.Video-container h3, .Image-container h3 {
+  width: 400px;
 }
 
-.Video-container {
+.Video-set {
+  border: 1px solid #333;
   float: left;
-  margin-right: 2%;
+}
+
+.Sidebar--fixed {
+  position: fixed;
 }

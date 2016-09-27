@@ -124,6 +124,13 @@ a {
 }
 
 .search-yt {
+  [type="radio"].with-gap:checked+label:before,
+  [type="radio"].with-gap:checked+label:after {
+    border-color: $magenta;
+  }
+  [type="radio"].with-gap:checked+label:after {
+    background-color: $magenta;
+  }
   #js-yt-search {
     @include big-search-bar(150px, $blue-grey, $blue-grey);
   }
@@ -132,10 +139,16 @@ a {
   }
   .video {
     margin-bottom: 10px;
-    div {
-      border: solid 1px $blue-grey;
-      height: 195px;
-      color: $blue-grey;
+    position: relative;
+    h5 {
+      box-sizing: padding-box;
+      position: absolute;
+      padding: 0 10px;
+      font-size: 1.25rem;
+      z-index: 2;
+    }
+    img {
+      filter: brightness(80%);
     }
   }
   .selected-videos {

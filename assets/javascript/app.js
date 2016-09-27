@@ -66,7 +66,7 @@ var BB = (function() {
 	  function renderSelectedTitles(titles) {
 	    $listContainer.html('');
 	    for(var i = 0; i < titles.length; i++) {
-	      $listContainer.append('<li>'+ titles[i].title +'<li>');
+	      $listContainer.append('<li>'+ titles[i].title +'&nbsp<i class="tiny close material-icons remove-video">close</i><li>');
 	    }
 
 	  }
@@ -126,6 +126,7 @@ var BB = (function() {
 
 	// search function
 	  function doSearch() {
+			$videosContainer.empty();
 	    searchTerm = $ytSearchInput.val().replace(/ /g, '+');
 	    query = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=' + maxResults + '&order=viewCount&q="' + searchTerm + '"&type=video&key=AIzaSyDIE0dd7hZ5j4vQRtwrU0CwQLGq-lhXWCc';
 	    getDatafromAPI(query);
@@ -139,7 +140,7 @@ var BB = (function() {
 	    }).done( data => {
 	      // videoId = data[0].id.videoId;
 	      for(var i = 0; i < data.items.length; i++) {
-	        createIframe(data.items[i]);
+	        createImage(data.items[i]);
 	      }
 	    });
 	  }
@@ -170,16 +171,17 @@ var BB = (function() {
 	  }
 
 		function createImage(item) {
-			var imgContainer = $('<div>').addClass('Image-container grid-flex-cell-1of2');
+			var imgContainer = $('<div>').addClass('video col s6');
 			var title = '<h5>' + item.snippet.title + '</h5>'
 			var image = $('<img>', {
 				class: 'Image',
-				width: '400',
-				height: '225',
+				width: '100%',
+				height: '100%',
 				src: item.snippet.thumbnails.default.url
 			});
-			var checkbox = '<input type="checkbox" class="checkbox" id=' + item.id.videoId + ' data-title="' + item.snippet.title + '" data-image="' + item.snippet.thumbnails.default.url + '" class="checkbox" />';
-			imgContainer.prepend(title).append(image).append(checkbox);
+			var checkbox = '<input type="radio" class="with-gap radio" id=' + item.id.videoId + ' data-title="' + item.snippet.title + '" data-image="' + item.snippet.thumbnails.default.url + '" />';
+			var label = '<label for='+item.id.videoId+'></label>';
+			imgContainer.prepend(title).append(image).append(checkbox).append(label);
 			renderVideos(imgContainer);
 		}
 

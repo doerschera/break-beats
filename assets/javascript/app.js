@@ -66,7 +66,7 @@ var BB = (function() {
 	  function renderSelectedTitles(titles) {
 	    $listContainer.html('');
 	    for(var i = 0; i < titles.length; i++) {
-	      $listContainer.append('<li>'+ titles[i].title +'&nbsp<i class="tiny close material-icons remove-video">close</i><li>');
+	      $listContainer.append('<li class="remove-video">'+ titles[i].title +'&nbsp<i class="tiny close material-icons">close</i><li>');
 	    }
 
 	  }
@@ -120,6 +120,7 @@ var BB = (function() {
 		$(document).on('click', '.remove-tag', removeTag);
 		$close.on('click', closeReviewSend);
 		$playlistSearchButton.on('click', searchTags);
+		$listContainer.on('click', '.remove-video', removeVideo);
 
 
 
@@ -145,10 +146,6 @@ var BB = (function() {
 	    });
 	  }
 
-		function clearAllResults() {
-	    $videosContainer.empty();
-	    return false;
-	  }
 
 		/* -------------------------------------------
 	   * create iframe function from data
@@ -183,6 +180,28 @@ var BB = (function() {
 			var label = '<label for='+item.id.videoId+'></label>';
 			imgContainer.prepend(title).append(image).append(checkbox).append(label);
 			renderVideos(imgContainer);
+		}
+
+		function removeVideo() {
+			console.log(titles);
+			var title = $(this).text()
+			title = title.replace(/close/g, "");
+			console.log(title);
+			var index = $(this).index();
+			console.log(index);
+			if(index === 0) {
+				$listContainer.children('li').eq(0).remove();
+				titles.splice(0, 1);
+			} else if(index === 2) {
+				$listContainer.children('li').eq(2).remove();
+				titles.splice(1, 1);
+			} else {
+				$listContainer.children('li').eq(4).remove();
+				titles.splice(2, 1);
+			}
+			$('.radio').prop('checked', false);
+			$('.radio').prop('disabled', false);
+			console.log(titles);
 		}
 
 

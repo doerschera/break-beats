@@ -56,6 +56,7 @@ var BB = (function() {
       checkedBoxes,
       maxResults = 10,
 			videoCounter = 0,
+			playlistCounter =0,
       paginationData;
 
 	// render DOM
@@ -185,18 +186,22 @@ var BB = (function() {
 
 		// internal tag search
 		function searchResultsTitle(title) {
+			var newDiv = $('<div class="playlist-display col s4" id="playlist'+playlistCounter+'">');
 			var h3 = $("<h3>"+title+"</h3>");
-			$('.playlist-results > ul').append(h3);
+			$('.playlist-results').append(newDiv);
+			$(newDiv).append(h3);
+			$(newDiv).append('<ul>')
 		}
 
 		function searchResultsList(image, title) {
 			var $li = $('<li>');
-			var $wrapperDiv = $('<div class="playlist-display col s12"></div>');
+			var $wrapperDiv = $('<div class="col s12"></div>');
 			$wrapperDiv.append('<img class="col s6" src='+image+' />');
 			$wrapperDiv.append('<p class="flow-text col s6">'+title+'</p>');
 			$li.append($wrapperDiv);
-			$('.playlist-results > ul').append($li);
-			$('.playlist-results').css('border', 'solid 1px '+$magenta);
+			$('#playlist'+playlistCounter).children("ul").append($li);
+			$('.playlist-display').css('border', 'solid 1px '+$magenta);
+
 		}
 
 
@@ -363,6 +368,7 @@ var BB = (function() {
 						var videoTitle = videos[i].videoTitle;
 						searchResultsList(defaultImg, videoTitle);
 					}
+					playlistCounter++;
 				}
 
 			})

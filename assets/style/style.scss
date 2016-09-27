@@ -92,9 +92,12 @@ a {
     @include big-button($magenta);
   }
   .playlist-results {
-    @include playlist-display($magenta);
-    border: none;
     margin-top: 50px;
+    .playlist-display {
+      @include playlist-display($magenta);
+      border: none;
+      margin-right: 20px;
+    }
   }
   .playlist-hover {
     position: absolute;

@@ -230,4 +230,11 @@ a {
       margin-right: 10px;
     }
   }
+  #js-error-message {
+    h5 {
+      color: $light-blue;
+      font-size: 1.25rem;
+      padding: 0 20px;
+    }
+  }
 }

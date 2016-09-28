@@ -33,6 +33,7 @@ a {
   opacity: 0.05; }
 
 .logo {
+  width: 100px;
   position: absolute;
   left: 20px;
   top: 20px; }
@@ -331,5 +332,9 @@ a {
       background-color: #92C6DE;
       color: white;
       margin-right: 10px; }
+  .playlist-review-send #js-error-message h5 {
+    color: #92C6DE;
+    font-size: 1.25rem;
+    padding: 0 20px; }
 
 /*# sourceMappingURL=style.css.map */

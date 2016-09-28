@@ -47,6 +47,7 @@ var BB = (function() {
 			$newTags = $('#js-user-tags'),
 			$addTag = $('#js-add-tag-button'),
 			$removeTag = $('.chip'),
+			$displayError = $('#js-error-message'),
 			$close = $('#js-close-send-review'),
 			$magenta = '#AB537F',
       query,
@@ -333,35 +334,44 @@ var BB = (function() {
    * firebase integration
    * ---------------------------------------- */
 
-
   function getPlaylistTitle() {
     var playlistTitle = $playlistTitle.val().trim();
+		console.log(playlistTitle);
     var tags = userTags;
 
-    var newPlaylist = playlistsRef.push().key;
-    playlistsRef.child('/'+newPlaylist+'/').update(
-      {
-        'vtitle': playlistTitle,
-        'vtags': tags
-      });
+		$displayError.empty();
+		if(playlistTitle == "") {
+			$displayError.append('<h5><em>Oops! Your playlist needs a title.</em></h5>');
+			return false;
+		} else if (tags.length < 1) {
+			$displayError.append('<h5><em>Oops! Please add at least one tag to your playlist.</em></h5>');
+			return false;
+		} else {
+			var newPlaylist = playlistsRef.push().key;
+	    playlistsRef.child('/'+newPlaylist+'/').update(
+	      {
+	        'vtitle': playlistTitle,
+	        'vtags': tags
+	      });
 
-    for(i = 0; i < titles.length; i++) {
-      saveToFirebase(newPlaylist, titles[i]);
-    }
+	    for(i = 0; i < titles.length; i++) {
+	      saveToFirebase(newPlaylist, titles[i]);
+	    }
 
-    var emailAddress = $emailAddress.val().trim();
-    sendEmail(emailAddress, newPlaylist);
-
-
-    // global tag array
-    // for(i = 0; i < tags.length; i++) {
-    //   tagsRef.child('/'+tags[i]+'/').set({
-    //     'tags': 'tag'
-    //   });
-    // }
+	    var emailAddress = $emailAddress.val().trim();
+	    sendEmail(emailAddress, newPlaylist);
 
 
-    return false;
+	    // global tag array
+	    // for(i = 0; i < tags.length; i++) {
+	    //   tagsRef.child('/'+tags[i]+'/').set({
+	    //     'tags': 'tag'
+	    //   });
+	    // }
+
+
+	    return false;
+		}
   }
 
 	function addTag() {
@@ -449,61 +459,23 @@ var BB = (function() {
 
 			//  temporarily disabled to avoid using up emails
 	    //  -----------------------------------------------------------
-	     emailjs.send('default_service', 'send_playlist', {
-	       'to_email': sendToAddress,
-	       'src1': defaultImages[0],
-				 'src2': defaultImages[1],
-				 'src3': defaultImages[2],
-	       'uri_link': uri,
-				 'playlist_name': playlistName
-	     }).then(
-	      function(response) {
-	        console.log("SUCCESS", response);
-	      },
-	      function(error) {
-	        console.log("FAILED", error);
-	      })
+	    //  emailjs.send('default_service', 'send_playlist', {
+	    //    'to_email': sendToAddress,
+	    //    'src1': defaultImages[0],
+			// 	 'src2': defaultImages[1],
+			// 	 'src3': defaultImages[2],
+	    //    'uri_link': uri,
+			// 	 'playlist_name': playlistName
+	    //  }).then(
+	    //   function(response) {
+	    //     console.log("SUCCESS", response);
+	    //   },
+	    //   function(error) {
+	    //     console.log("FAILED", error);
+	    //   })
 
 			})
 
    }
-
-
-
-
-
-
-  /* -------------------------------------------
-   * get URI parameters to display break videos
-   * ---------------------------------------- */
-
-  function getURIParameter(paramID, url) {
-    if (!url) url = window.location.href;
-    paramID = paramID.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + paramID + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    var playlistId = results[2].replace(/\+/g, " ");
-    // return decodeURIComponent(atob(playlistId));
-    return playlistId;
-  }
-
-// add to DOM
-  playlistId = getURIParameter('breakid');
-
-  playlistsRef.on('value', function(snapshot) {
-    var playlists = snapshot.val();
-    if(playlistId) {
-      $videosContainer.html('<h1>' + playlists[playlistId].vtitle + '</h1>');
-      var videos =playlists[playlistId].videos;
-      for(video in videos) {
-        if(videos.hasOwnProperty(video)) {
-          var vid = videos[video].videoId;
-          $videosContainer.append('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + vid + '?rel=0" frameborder="0" allowfullscreen></iframe>');
-        }
-      }
-    }
-	})
 
 })();

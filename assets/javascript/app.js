@@ -40,6 +40,7 @@ var BB = (function() {
       $ytSearchInput = $('#js-yt-search'),
 			$viewNewPlaylist = $('#js-view-new-playlist'),
       $saveButton = $('.save-playlist'),
+			$emailAddress = $('#js-email-address'),
 			$sendButton = $('#js-send-email'),
       $playlistTitle = $('#js-playlist-name'),
 			$playlistVideoContainer = $('#js-video-list'),
@@ -348,8 +349,8 @@ var BB = (function() {
       saveToFirebase(newPlaylist, titles[i]);
     }
 
-    // var emailAddress = $emailAddress.val().trim();
-    // sendEmail(emailAddress, newPlaylist);
+    var emailAddress = $emailAddress.val().trim();
+    sendEmail(emailAddress, newPlaylist);
 
 
     // global tag array
@@ -422,5 +423,87 @@ var BB = (function() {
 			})
 		})
 	}
+
+	/* -------------------------------------------
+   * send email
+   * ---------------------------------------- */
+
+   function sendEmail(emailAddress, newPlaylist) {
+    var sendToAddress = emailAddress;
+    var playlistRef = playlistsRef.child('/'+newPlaylist+'/');
+
+    playlistRef.on('value', function(snapshot) {
+      var playlist = snapshot.val();
+
+			var playlistName = playlist.vtitle;
+			var uri = "https://afternoon-falls-60599.herokuapp.com/break/?breakid=" + newPlaylist
+      var defaultImages = [];
+      var videos = playlist.videos;
+      for(video in videos) {
+        if(videos.hasOwnProperty(video)) {
+          var vimg = videos[video].defaultImg;
+					defaultImages.push(vimg);
+        }
+      }
+
+
+			//  temporarily disabled to avoid using up emails
+	    //  -----------------------------------------------------------
+	     emailjs.send('default_service', 'send_playlist', {
+	       'to_email': sendToAddress,
+	       'src1': defaultImages[0],
+				 'src2': defaultImages[1],
+				 'src3': defaultImages[2],
+	       'uri_link': uri,
+				 'playlist_name': playlistName
+	     }).then(
+	      function(response) {
+	        console.log("SUCCESS", response);
+	      },
+	      function(error) {
+	        console.log("FAILED", error);
+	      })
+
+			})
+
+   }
+
+
+
+
+
+
+  /* -------------------------------------------
+   * get URI parameters to display break videos
+   * ---------------------------------------- */
+
+  function getURIParameter(paramID, url) {
+    if (!url) url = window.location.href;
+    paramID = paramID.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + paramID + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    var playlistId = results[2].replace(/\+/g, " ");
+    // return decodeURIComponent(atob(playlistId));
+    return playlistId;
+  }
+
+// add to DOM
+  playlistId = getURIParameter('breakid');
+
+  playlistsRef.on('value', function(snapshot) {
+    var playlists = snapshot.val();
+    if(playlistId) {
+      $videosContainer.html('<h1>' + playlists[playlistId].vtitle + '</h1>');
+      var videos =playlists[playlistId].videos;
+      for(video in videos) {
+        if(videos.hasOwnProperty(video)) {
+          var vid = videos[video].videoId;
+          $videosContainer.append('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + vid + '?rel=0" frameborder="0" allowfullscreen></iframe>');
+        }
+      }
+    }
+	})
 
 })();

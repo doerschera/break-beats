@@ -385,12 +385,10 @@ var BB = (function() {
     vid = video.videoId;
     vimg = video.image;
 		vtitle = titles[videoCounter].title
-		playlistsRef.child('/'+playlistName+'/videos').child(videoCounter).update({
+    playlistsRef.child(playlistName).child('videos').push({
         videoId: vid,
         defaultImg: vimg,
-				videoTitle: vtitle
     });
-		videoCounter ++
   }
 
   console.log(titles);
@@ -410,13 +408,12 @@ var BB = (function() {
 					var title = playlist.vtitle;
 					searchResultsTitle(title)
 					returnedTags.push(tags);
-					for(var i = 0; i < 3; i++) {
+					for(i in videos) {
 						var defaultImg = videos[i].defaultImg;
 						var videoId = videos[i].videoId;
 						var videoTitle = videos[i].videoTitle;
 						searchResultsList(defaultImg, videoTitle);
 					}
-					playlistCounter++;
 				}
 
 			})

@@ -139,6 +139,7 @@ var BB = (function() {
 			hideLanding('.search-playlists');
 		});
 		$viewNewPlaylist.on('click', function() {
+			$(document).scrollTop(0);
 			reviewAndSend();
 			renderNewPlaylist();
 		});

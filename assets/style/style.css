@@ -5,22 +5,18 @@ body {
   color: white; }
 
 ::-webkit-input-placeholder {
-  color: white;
-  padding-left: 10px; }
+  color: white; }
 
 :-moz-placeholder {
   /* Firefox 18- */
-  color: white;
-  padding-left: 10px; }
+  color: white; }
 
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: white;
-  padding-left: 10px; }
+  color: white; }
 
 :-ms-input-placeholder {
-  color: white;
-  padding-left: 10px; }
+  color: white; }
 
 a {
   color: white;
@@ -48,6 +44,7 @@ a {
     .landing-page .call-to-action h1 {
       margin: 5px 0; }
   .landing-page #js-landing-search {
+    padding-left: 10px;
     margin-top: 80px;
     margin-bottom: 0;
     background-color: #6E7592;
@@ -76,6 +73,7 @@ a {
       color: white; }
 
 .search-playlists #js-playlist-search {
+  padding-left: 10px;
   margin-top: 150px;
   margin-bottom: 0;
   background-color: #AB537F;
@@ -84,6 +82,7 @@ a {
   max-height: 42px;
   position: relative; }
 .search-playlists #js-playlist-search-button {
+  margin-left: 10px;
   position: relative;
   bottom: 44px;
   left: 100%;
@@ -149,6 +148,7 @@ a {
   .search-playlists .playlist-hover h4 {
     color: white; }
   .search-playlists .playlist-hover #js-view-playlist {
+    margin-left: 10px;
     position: relative;
     bottom: 44px;
     left: 100%;
@@ -178,6 +178,7 @@ a {
 .search-yt [type="radio"].with-gap:checked + label:after {
   background-color: #AB537F; }
 .search-yt #js-yt-search {
+  padding-left: 10px;
   margin-top: 150px;
   margin-bottom: 0;
   background-color: #6E7592;
@@ -185,6 +186,7 @@ a {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
   max-height: 42px; }
 .search-yt #js-yt-search-button {
+  margin-left: 10px;
   position: relative;
   bottom: 44px;
   left: 100%;

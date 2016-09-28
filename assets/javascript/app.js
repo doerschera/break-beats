@@ -464,20 +464,20 @@ var BB = (function() {
 
 				//  temporarily disabled to avoid using up emails
 		    //  -----------------------------------------------------------
-		    //  emailjs.send('default_service', 'send_playlist', {
-		    //    'to_email': sendToAddress,
-		    //    'src1': defaultImages[0],
-				// 	 'src2': defaultImages[1],
-				// 	 'src3': defaultImages[2],
-		    //    'uri_link': uri,
-				// 	 'playlist_name': playlistName
-		    //  }).then(
-		    //   function(response) {
-		    //     console.log("SUCCESS", response);
-		    //   },
-		    //   function(error) {
-		    //     console.log("FAILED", error);
-		    //   })
+		     emailjs.send('default_service', 'send_playlist', {
+		       'to_email': sendToAddress,
+		       'src1': defaultImages[0],
+					 'src2': defaultImages[1],
+					 'src3': defaultImages[2],
+		       'uri_link': uri,
+					 'playlist_name': playlistName
+		     }).then(
+		      function(response) {
+		        console.log("SUCCESS", response);
+		      },
+		      function(error) {
+		        console.log("FAILED", error);
+		      })
 
 				})
 		}

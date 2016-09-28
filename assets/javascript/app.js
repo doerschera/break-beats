@@ -58,7 +58,7 @@ var BB = (function() {
 			userTags = [],
       checkedBoxes,
       maxResults = 10,
-			playlistCounter =0,
+			playlistCounter = 0,
       paginationData;
 
 	// render DOM
@@ -255,9 +255,8 @@ var BB = (function() {
 			$wrapperDiv.append('<img class="col s6" src='+image+' />');
 			$wrapperDiv.append('<p class="flow-text col s6">'+title+'</p>');
 			$li.append($wrapperDiv);
-			$('#playlist'+playlistCounter).children("ul").append($li);
+			$('#playlist'+playlistCounter+'> ul').append($li);
 			$('.playlist-display').css('border', 'solid 1px '+$magenta);
-
 		}
 
 
@@ -433,6 +432,7 @@ var BB = (function() {
 						var videoTitle = videos[i].videoTitle;
 						searchResultsList(defaultImg, videoTitle);
 					}
+					playlistCounter++
 				}
 
 			})

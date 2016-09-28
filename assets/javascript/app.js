@@ -56,7 +56,6 @@ var BB = (function() {
 			userTags = [],
       checkedBoxes,
       maxResults = 10,
-			videoCounter = 0,
 			playlistCounter =0,
       paginationData;
 
@@ -93,6 +92,8 @@ var BB = (function() {
 	function hideLanding(pageToShow) {
 		$('.landing-page').addClass('disable');
 		$(pageToShow).removeClass('disable');
+		$ytSearchInput.select();
+		$playlistSearch.select();
 	}
 		function reviewAndSend() {
 			$('.search-yt').addClass('opacity');
@@ -384,10 +385,12 @@ var BB = (function() {
   function saveToFirebase(playlistName, video) {
     vid = video.videoId;
     vimg = video.image;
-		vtitle = titles[videoCounter].title
+		vtitle = video.title;
+
     playlistsRef.child(playlistName).child('videos').push({
         videoId: vid,
         defaultImg: vimg,
+				videoTitle: vtitle
     });
   }
 

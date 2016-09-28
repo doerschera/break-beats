@@ -153,6 +153,14 @@ var BB = (function() {
 		$('.playlist-results').on('mouseleave', '.playlist-display', function() {
 			$('.playlist-hover').remove();
 		})
+		$('#js-view-search').on('click', function() {
+			$('.search-yt').addClass('disable').removeClass('opacity');
+			$('.search-playlists').removeClass('disable');
+		})
+		$('#js-view-create').on('click', function() {
+			$('.search-playlists').addClass('disable');
+			$('.search-yt').removeClass('disable');
+		})
 
 
 
@@ -481,6 +489,16 @@ var BB = (function() {
 		     }).then(
 		      function(response) {
 		        console.log("SUCCESS", response);
+						$('#js-email-success').removeClass('disable');
+						$('.playlist-review-send').css('opacity', '0.5');
+						setTimeout(function() {
+							titles = [];
+							$('#js-email-success').addClass('disable');
+							$('.playlist-review-send').css('opacity', '1').addClass('disable');
+							$('.search-yt').removeClass('opacity');
+							$('.yt-results, #js-selected-list').empty();
+							$('#js-view-new-playlist').addClass('disabled');
+						}, 5000);
 		      },
 		      function(error) {
 		        console.log("FAILED", error);

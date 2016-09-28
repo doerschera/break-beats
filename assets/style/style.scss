@@ -37,6 +37,7 @@ a {
 
 .opacity {
   opacity: 0.05;
+  position: absolute;
 }
 
 .logo {
@@ -48,6 +49,21 @@ a {
 
 .top-link {
   color: #e6e6e6;
+  h1 {
+    text-align: right;
+    position: absolute;
+    right: 50px;
+    width: 300px;
+    font-size: 3.75rem;
+  }
+}
+
+#js-view-create:hover {
+  color: $magenta;
+}
+
+#js-view-search:hover {
+  color: $blue-grey;
 }
 
 .landing-page {
@@ -62,7 +78,8 @@ a {
     }
   }
   #js-landing-search {
-    @include big-search-bar(80px, $blue-grey, white);
+    @include big-search-bar($blue-grey, white);
+    margin-top: 80px;
     position: relative;
   }
   .or-statement {
@@ -86,7 +103,7 @@ a {
 
 .search-playlists {
   #js-playlist-search {
-    @include big-search-bar(150px, $magenta, $magenta);
+    @include big-search-bar($magenta, $magenta);
     position: relative;
   }
   #js-playlist-search-button {
@@ -142,7 +159,7 @@ a {
     background-color: $magenta;
   }
   #js-yt-search {
-    @include big-search-bar(150px, $blue-grey, $blue-grey);
+    @include big-search-bar($blue-grey, $blue-grey);
   }
   #js-yt-search-button {
     @include big-button($blue-grey);
@@ -186,9 +203,9 @@ a {
 }
 
 .playlist-review-send {
-  position: absolute;
+  position: relative;
   width: 100%;
-  bottom: 60px;
+  top: 250px;
   #close-review-send {
     position: absolute;
     top: -150px;
@@ -240,6 +257,20 @@ a {
       color: $light-blue;
       font-size: 1.25rem;
       padding: 0 20px;
+    }
+  }
+  .round {
+    border-radius: 100%;
+    height: 200px;
+    width: 200px;
+    background-color: $light-blue;
+    text-align: center;
+    position: absolute;
+    left: 40vw;
+    top: 0;
+    i {
+      color: white;
+      line-height: 200px;
     }
   }
 }

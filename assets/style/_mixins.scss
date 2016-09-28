@@ -12,9 +12,9 @@
   }
 }
 
-@mixin big-search-bar($margin-top, $color, $border-color) {
+@mixin big-search-bar($color, $border-color) {
   padding-left: 10px;
-  margin-top: $margin-top;
+  margin-top: 250px;
   margin-bottom: 0;
   background-color: $color;
   border: solid 1px $border-color;

@@ -104,6 +104,9 @@
         padding-left: 10px;
         font-size: 1rem;
         color: $color;
+        max-height: 62px;
+        overflow: hidden;
+        margin-bottom: 0;
       }
     }
   }

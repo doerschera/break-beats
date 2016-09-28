@@ -109,7 +109,7 @@ a {
     border: none;
     margin-left: 8.33333%;
     margin-bottom: 8.3333%;
-    min-height: 516px; }
+    max-height: 100%; }
     .search-playlists .playlist-results .playlist-display h3 {
       padding-left: 10px;
       font-size: 1.75rem;
@@ -136,7 +136,10 @@ a {
           display: inline-block;
           padding-left: 10px;
           font-size: 1rem;
-          color: #AB537F; }
+          color: #AB537F;
+          max-height: 62px;
+          overflow: hidden;
+          margin-bottom: 0; }
 .search-playlists .playlist-hover {
   position: absolute;
   bottom: 0px;
@@ -146,7 +149,8 @@ a {
   border: solid 1px #AB537F;
   -webkit-box-shadow: 7px 7px 5px #AB537F;
   -moz-box-shadow: 7px 7px 5px #AB537F;
-  box-shadow: 7px 7px 5px #AB537F; }
+  box-shadow: 7px 7px 5px #AB537F;
+  padding: 0 5px; }
   .search-playlists .playlist-hover h4 {
     color: white; }
   .search-playlists .playlist-hover #js-view-playlist {
@@ -165,8 +169,10 @@ a {
     height: auto;
     line-height: 42px;
     text-transform: none;
-    left: -25%;
-    top: 250px; }
+    position: absolute;
+    height: 40px;
+    left: 33.333%;
+    top: 400px; }
   .search-playlists .playlist-hover .chip {
     background-color: white;
     color: #AB537F;
@@ -312,7 +318,10 @@ a {
           display: inline-block;
           padding-left: 10px;
           font-size: 1rem;
-          color: #92C6DE; }
+          color: #92C6DE;
+          max-height: 62px;
+          overflow: hidden;
+          margin-bottom: 0; }
   .playlist-review-send #js-add-tag-button {
     position: relative;
     border-radius: 0;

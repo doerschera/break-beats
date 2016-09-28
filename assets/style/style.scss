@@ -95,7 +95,7 @@ a {
       border: none;
       margin-left: 8.33333%;
       margin-bottom: 8.3333%;
-      min-height: 516px;
+      max-height: 100%;
     }
   }
   .playlist-hover {
@@ -108,13 +108,16 @@ a {
     -webkit-box-shadow: 7px 7px 5px $magenta;
     -moz-box-shadow:    7px 7px 5px $magenta;
     box-shadow:         7px 7px 5px $magenta;
+    padding: 0 5px;
     h4 {
       color: white;
     }
     #js-view-playlist  {
       @include big-button($magenta);
-      left: -25%;
-      top: 250px;
+      position: absolute;
+      height: 40px;
+      left: 33.333%;
+      top: 400px;
     }
     .chip {
       background-color: white;

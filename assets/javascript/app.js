@@ -242,7 +242,7 @@ var BB = (function() {
 
 		// internal tag search
 		function searchResultsTitle(title) {
-			var newDiv = $('<div class="playlist-display col s5" id="playlist'+playlistCounter+'">');
+			var newDiv = $('<div class="playlist-display col s5 l3" id="playlist'+playlistCounter+'">');
 			var h3 = $("<h3>"+title+"</h3>");
 			$('.playlist-results').append(newDiv);
 			$(newDiv).append(h3);
@@ -252,7 +252,7 @@ var BB = (function() {
 		function searchResultsList(image, title) {
 			var $li = $('<li>');
 			var $wrapperDiv = $('<div class="col s12"></div>');
-			$wrapperDiv.append('<img class="col s6" src='+image+' />');
+			$wrapperDiv.append('<img class="col s6 responsive-img" src='+image+' />');
 			$wrapperDiv.append('<p class="flow-text col s6">'+title+'</p>');
 			$li.append($wrapperDiv);
 			$('#playlist'+playlistCounter+'> ul').append($li);

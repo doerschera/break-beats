@@ -66,6 +66,7 @@ var BB = (function() {
 	    $videosContainer.append(video);
 	  }
 	  function renderSelectedTitles(titles) {
+			$viewNewPlaylist.removeClass('disabled')
 	    $listContainer.html('');
 	    for(var i = 0; i < titles.length; i++) {
 	      $listContainer.append('<li class="remove-video">'+ titles[i].title +'&nbsp<i class="tiny close material-icons">close</i><li>');
@@ -232,6 +233,9 @@ var BB = (function() {
 			}
 			$('.radio').prop('checked', false);
 			$('.radio').prop('disabled', false);
+			if(titles.length < 1) {
+				$viewNewPlaylist.addClass('disabled');
+			}
 			console.log(titles);
 		}
 

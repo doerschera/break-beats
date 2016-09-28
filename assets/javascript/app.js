@@ -441,41 +441,47 @@ var BB = (function() {
    function sendEmail(emailAddress, newPlaylist) {
     var sendToAddress = emailAddress;
     var playlistRef = playlistsRef.child('/'+newPlaylist+'/');
+		var validAddress = /[^@]+@[^@]+/.test(sendToAddress);
 
-    playlistRef.on('value', function(snapshot) {
-      var playlist = snapshot.val();
+		if(!validAddress) {
+			$displayError.append('<h5><em>Oops! That\'s not a valid email address.</em></h5>');
+			return false;
+		} else {
+			playlistRef.on('value', function(snapshot) {
+	      var playlist = snapshot.val();
 
-			var playlistName = playlist.vtitle;
-			var uri = "https://afternoon-falls-60599.herokuapp.com/break/?breakid=" + newPlaylist
-      var defaultImages = [];
-      var videos = playlist.videos;
-      for(video in videos) {
-        if(videos.hasOwnProperty(video)) {
-          var vimg = videos[video].defaultImg;
-					defaultImages.push(vimg);
-        }
-      }
+				var playlistName = playlist.vtitle;
+				var uri = "https://afternoon-falls-60599.herokuapp.com/break/?breakid=" + newPlaylist
+	      var defaultImages = [];
+	      var videos = playlist.videos;
+	      for(video in videos) {
+	        if(videos.hasOwnProperty(video)) {
+	          var vimg = videos[video].defaultImg;
+						defaultImages.push(vimg);
+	        }
+	      }
 
 
-			//  temporarily disabled to avoid using up emails
-	    //  -----------------------------------------------------------
-	    //  emailjs.send('default_service', 'send_playlist', {
-	    //    'to_email': sendToAddress,
-	    //    'src1': defaultImages[0],
-			// 	 'src2': defaultImages[1],
-			// 	 'src3': defaultImages[2],
-	    //    'uri_link': uri,
-			// 	 'playlist_name': playlistName
-	    //  }).then(
-	    //   function(response) {
-	    //     console.log("SUCCESS", response);
-	    //   },
-	    //   function(error) {
-	    //     console.log("FAILED", error);
-	    //   })
+				//  temporarily disabled to avoid using up emails
+		    //  -----------------------------------------------------------
+		    //  emailjs.send('default_service', 'send_playlist', {
+		    //    'to_email': sendToAddress,
+		    //    'src1': defaultImages[0],
+				// 	 'src2': defaultImages[1],
+				// 	 'src3': defaultImages[2],
+		    //    'uri_link': uri,
+				// 	 'playlist_name': playlistName
+		    //  }).then(
+		    //   function(response) {
+		    //     console.log("SUCCESS", response);
+		    //   },
+		    //   function(error) {
+		    //     console.log("FAILED", error);
+		    //   })
 
-			})
+				})
+		}
 
-   }
+  }
 
 })();

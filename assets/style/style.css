@@ -107,7 +107,9 @@ a {
     border: solid 1px #AB537F;
     box-sizing: border-box;
     border: none;
-    margin-right: 20px; }
+    margin-left: 8.33333%;
+    margin-bottom: 8.3333%;
+    min-height: 516px; }
     .search-playlists .playlist-results .playlist-display h3 {
       padding-left: 10px;
       font-size: 1.75rem;

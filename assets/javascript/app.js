@@ -242,7 +242,7 @@ var BB = (function() {
 
 		// internal tag search
 		function searchResultsTitle(title) {
-			var newDiv = $('<div class="playlist-display col s4" id="playlist'+playlistCounter+'">');
+			var newDiv = $('<div class="playlist-display col s5" id="playlist'+playlistCounter+'">');
 			var h3 = $("<h3>"+title+"</h3>");
 			$('.playlist-results').append(newDiv);
 			$(newDiv).append(h3);
@@ -412,6 +412,8 @@ var BB = (function() {
   console.log(titles);
 
 	function searchTags() {
+		$('.playlist-results').empty();
+		returnedTags = [];
 		playlistsRef.once('value').then(function(snapshot) {
 			var tagSearch = $playlistSearch.val().trim()
 			console.log(tagSearch);

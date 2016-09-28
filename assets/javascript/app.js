@@ -51,6 +51,7 @@ var BB = (function() {
       query,
       searchTerm,
       videoId,
+			returnedTags= [],
       titles = [],
 			userTags = [],
       checkedBoxes,
@@ -101,6 +102,28 @@ var BB = (function() {
 			$('.playlist-review-send').addClass('disable');
 			$('.search-yt').removeClass('opacity');
 		}
+		function playlistHover() {
+			$(this).append('<div class="playlist-hover"></div>');
+			var index = $(this).index();
+			var height = $(this).height();
+			var width = $(this).width();
+			$('.playlist-hover').css({
+				'height': height,
+				'width': width
+			})
+			$('.playlist-hover').append('<h4>This playlist is...</h4>');
+			renderPlaylistTags(index);
+			$('.playlist-hover').append('<a class="waves-effect btn" id="js-view-playlist">view</a>');
+		}
+		function renderPlaylistTags(index) {
+			console.log(returnedTags);
+			var tagArray = returnedTags[index];
+			for(var i = 0; i < tagArray.length; i++) {
+				var tag = tagArray[i];
+				var tagDiv = $('<div class="chip">'+tag+'</div>');
+				$('.playlist-hover').append(tagDiv);
+			}
+		}
 
 	// bind events
 	  $ytSearch.on('click', doSearch);
@@ -121,6 +144,10 @@ var BB = (function() {
 		$close.on('click', closeReviewSend);
 		$playlistSearchButton.on('click', searchTags);
 		$listContainer.on('click', '.remove-video', removeVideo);
+		$('.playlist-results').on('mouseenter', '.playlist-display', playlistHover);
+		$('.playlist-results').on('mouseleave', '.playlist-display', function() {
+			$('.playlist-hover').remove();
+		})
 
 
 
@@ -372,17 +399,17 @@ var BB = (function() {
 		playlistsRef.once('value').then(function(snapshot) {
 			var tagSearch = $playlistSearch.val().trim()
 			console.log(tagSearch);
-			var numChildren = snapshot.numChildren();
 
 			snapshot.forEach(function(childSnapshot) {
 				var playlist = childSnapshot.val();
-				var tags = playlist.vtags;
 				var videos = playlist.videos;
+				var tags = playlist.vtags;
 
 				if(tags.indexOf(tagSearch) != -1) {
 					console.log(true);
 					var title = playlist.vtitle;
 					searchResultsTitle(title)
+					returnedTags.push(tags);
 					for(var i = 0; i < 3; i++) {
 						var defaultImg = videos[i].defaultImg;
 						var videoId = videos[i].videoId;

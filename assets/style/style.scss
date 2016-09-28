@@ -102,7 +102,7 @@ a {
   .playlist-hover {
     position: absolute;
     bottom: 0px;
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(171, 83, 127,0.9);
     text-align: center;
     height: 229px;
     border: solid 1px $magenta;
@@ -110,15 +110,19 @@ a {
     -moz-box-shadow:    7px 7px 5px $magenta;
     box-shadow:         7px 7px 5px $magenta;
     h4 {
-      color: $magenta;
+      color: white;
     }
     #js-view-playlist  {
-      @include small-button($magenta);
-      top: 90px;
+      @include big-button($magenta);
+      left: -25%;
+      top: 250px;
     }
     .chip {
-      background-color: $magenta;
-      color: white;
+      background-color: white;
+      color: $magenta;
+      font-size: 1.5rem;
+      margin-right: 20px;
+      margin-top: 20px;
     }
   }
 }

@@ -136,7 +136,7 @@ a {
 .search-playlists .playlist-hover {
   position: absolute;
   bottom: 0px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(171, 83, 127, 0.9);
   text-align: center;
   height: 229px;
   border: solid 1px #AB537F;
@@ -144,9 +144,11 @@ a {
   -moz-box-shadow: 7px 7px 5px #AB537F;
   box-shadow: 7px 7px 5px #AB537F; }
   .search-playlists .playlist-hover h4 {
-    color: #AB537F; }
+    color: white; }
   .search-playlists .playlist-hover #js-view-playlist {
     position: relative;
+    bottom: 44px;
+    left: 100%;
     border-radius: 0;
     border-width: 1px;
     border-color: #AB537F;
@@ -154,14 +156,18 @@ a {
     border-style: solid;
     background-color: white;
     color: #AB537F;
+    text-decoration: underline;
     height: auto;
-    line-height: 1.5;
+    line-height: 42px;
     text-transform: none;
-    padding: 0 10px;
-    top: 90px; }
+    left: -25%;
+    top: 250px; }
   .search-playlists .playlist-hover .chip {
-    background-color: #AB537F;
-    color: white; }
+    background-color: white;
+    color: #AB537F;
+    font-size: 1.5rem;
+    margin-right: 20px;
+    margin-top: 20px; }
 
 .search-yt [type="radio"].with-gap:checked + label:before,
 .search-yt [type="radio"].with-gap:checked + label:after {

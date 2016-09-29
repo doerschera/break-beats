@@ -23,6 +23,7 @@
 }
 
 @mixin small-search-bar($color) {
+  padding-left: 5px;
   background-color: $color;
   margin-bottom: 0;
   height: 2rem;

@@ -276,6 +276,7 @@ a {
     .playlist-review-send #close-review-send a {
       color: #92C6DE; }
   .playlist-review-send #js-playlist-name, .playlist-review-send #js-email-address, .playlist-review-send #js-add-tags {
+    padding-left: 5px;
     background-color: #92C6DE;
     margin-bottom: 0;
     height: 2rem; }

@@ -50,6 +50,9 @@ a {
 #js-view-search:hover {
   color: #6E7592; }
 
+#send-break:hover {
+  color: #92C6DE; }
+
 .landing-page {
   width: 100vw;
   min-height: 100vh;

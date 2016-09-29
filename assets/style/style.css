@@ -379,4 +379,14 @@ a {
       color: white;
       line-height: 200px; }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 150px;
+  width: 100vw;
+  background-image: url("images/footer.png");
+  background-repeat: repeat-x;
+  background-size: auto 150px;
+  z-index: -1; }
+
 /*# sourceMappingURL=style.css.map */

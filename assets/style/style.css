@@ -193,7 +193,7 @@ a {
   .search-playlists .playlist-hover .chip {
     background-color: white;
     color: #AB537F;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin-right: 20px;
     margin-top: 20px; }
 
@@ -300,7 +300,7 @@ a {
       color: #92C6DE;
       font-size: 10px;
       text-align: center; }
-  .playlist-review-send .playlist-display {
+  .playlist-review-send #new-playlist-display {
     position: relative;
     bottom: 60px;
     padding: 0;
@@ -310,29 +310,29 @@ a {
     -webkit-box-shadow: 7px 7px 5px #92C6DE;
     -moz-box-shadow: 7px 7px 5px #92C6DE;
     box-shadow: 7px 7px 5px #92C6DE; }
-    .playlist-review-send .playlist-display h3 {
+    .playlist-review-send #new-playlist-display h3 {
       padding-left: 10px;
       font-size: 1.75rem;
       margin-bottom: 0;
       text-align: center;
       border-bottom: solid 1px #92C6DE;
       color: #92C6DE; }
-    .playlist-review-send .playlist-display ul {
+    .playlist-review-send #new-playlist-display ul {
       margin: 0; }
-      .playlist-review-send .playlist-display ul li {
+      .playlist-review-send #new-playlist-display ul li {
         padding: 5px;
         background-color: white; }
-        .playlist-review-send .playlist-display ul li div {
+        .playlist-review-send #new-playlist-display ul li div {
           margin: 10px 0;
           padding-bottom: 15px; }
-          .playlist-review-send .playlist-display ul li div:nth-child(odd) {
+          .playlist-review-send #new-playlist-display ul li div:nth-child(odd) {
             border-top: solid 1px #92C6DE;
             border-bottom: solid 1px #92C6DE; }
-        .playlist-review-send .playlist-display ul li img {
+        .playlist-review-send #new-playlist-display ul li img {
           margin-top: 15px;
           vertical-align: middle;
           display: inline-block; }
-        .playlist-review-send .playlist-display ul li p {
+        .playlist-review-send #new-playlist-display ul li p {
           display: inline-block;
           padding-left: 10px;
           font-size: 1rem;
@@ -389,5 +389,58 @@ footer {
   background-repeat: repeat-x;
   background-size: auto 150px;
   z-index: -1; }
+
+.view-playlist h5, .view-playlist p {
+  color: #92C6DE; }
+.view-playlist h5 {
+  margin-top: 50px; }
+.view-playlist .send {
+  margin-bottom: 200px; }
+  .view-playlist .send input {
+    padding-left: 10px;
+    margin-top: 250px;
+    margin-bottom: 0;
+    background-color: #92C6DE;
+    border: solid 1px #92C6DE;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
+    max-height: 42px;
+    margin-top: 0px; }
+  .view-playlist .send #js-view-playlist-email {
+    margin-left: 10px;
+    position: relative;
+    bottom: 44px;
+    left: 100%;
+    border-radius: 0;
+    border-width: 1px;
+    border-color: #92C6DE;
+    border-image: none;
+    border-style: solid;
+    background-color: white;
+    color: #92C6DE;
+    text-decoration: underline;
+    height: auto;
+    line-height: 42px;
+    text-transform: none; }
+.view-playlist #js-video-display {
+  margin-top: 250px;
+  height: 700px;
+  width: 500px;
+  border: solid 1px #92C6DE; }
+
+@media screen and (max-width: 825px) {
+  .call-to-action h1 {
+    font-size: 4rem; }
+
+  #js-view-playlist {
+    top: 250px; } }
+@media screen and (max-width: 775px) {
+  .call-to-action h1 {
+    font-size: 4.25rem; } }
+@media screen and (max-width: 600px) {
+  #js-view-playlist {
+    top: 150px; }
+
+  .chip {
+    font-size: 1rem; } }
 
 /*# sourceMappingURL=style.css.map */

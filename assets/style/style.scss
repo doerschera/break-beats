@@ -143,7 +143,7 @@ a {
     .chip {
       background-color: white;
       color: $magenta;
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       margin-right: 20px;
       margin-top: 20px;
     }
@@ -231,7 +231,7 @@ a {
       text-align: center;
     }
   }
-  .playlist-display {
+  #new-playlist-display {
     @include playlist-display($light-blue);
     -webkit-box-shadow: 7px 7px 5px $light-blue;
     -moz-box-shadow:    7px 7px 5px $light-blue;
@@ -284,4 +284,57 @@ footer {
   background-repeat: repeat-x;
   background-size: auto 150px;
   z-index: -1;
+}
+
+// view playlist
+
+.view-playlist {
+  h5, p {
+    color: $light-blue;
+  }
+  h5 {
+    margin-top: 50px;
+  }
+  .send {
+    margin-bottom: 200px;
+    input {
+      @include big-search-bar($light-blue, $light-blue);
+      margin-top: 0px;
+    }
+    #js-view-playlist-email {
+      @include big-button($light-blue);
+    }
+  }
+  #js-video-display {
+    margin-top: 250px;
+    height: 700px;
+    width: 500px;
+    border: solid 1px $light-blue;
+  }
+}
+
+// media queries
+
+@media screen and (max-width: 825px){
+  .call-to-action h1 {
+    font-size: 4rem;
+  }
+  #js-view-playlist {
+    top: 250px;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .call-to-action h1 {
+    font-size: 4.25rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #js-view-playlist {
+    top: 150px;
+  }
+  .chip {
+    font-size: 1rem;
+  }
 }

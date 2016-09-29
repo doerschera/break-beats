@@ -171,6 +171,7 @@ var BB = (function() {
 	    searchTerm = $ytSearchInput.val().replace(/ /g, '+');
 	    query = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=' + maxResults + '&order=viewCount&q="' + searchTerm + '"&type=video&key=AIzaSyDIE0dd7hZ5j4vQRtwrU0CwQLGq-lhXWCc';
 	    getDatafromAPI(query);
+			$ytSearchInput.val("");
 	    return false;
 	  }
 
@@ -250,7 +251,7 @@ var BB = (function() {
 
 		// internal tag search
 		function searchResultsTitle(title) {
-			var newDiv = $('<div class="playlist-display col s5 l3" id="playlist'+playlistCounter+'">');
+			var newDiv = $('<div class="playlist-display col s5" id="playlist'+playlistCounter+'">');
 			var h3 = $("<h3>"+title+"</h3>");
 			$('.playlist-results').append(newDiv);
 			$(newDiv).append(h3);
@@ -350,6 +351,8 @@ var BB = (function() {
     var playlistTitle = $playlistTitle.val().trim();
 		console.log(playlistTitle);
     var tags = userTags;
+		var emailAddress = $emailAddress.val().trim();
+		var validAddress = /[^@]+@[^@]+/.test(emailAddress);
 
 		$displayError.empty();
 		if(playlistTitle == "") {
@@ -357,6 +360,9 @@ var BB = (function() {
 			return false;
 		} else if (tags.length < 1) {
 			$displayError.append('<h5><em>Oops! Please add at least one tag to your playlist.</em></h5>');
+			return false;
+		} else if(!validAddress) {
+			$displayError.append('<h5><em>Oops! That\'s not a valid email address.</em></h5>');
 			return false;
 		} else {
 			var newPlaylist = playlistsRef.push().key;
@@ -370,16 +376,15 @@ var BB = (function() {
 	      saveToFirebase(newPlaylist, titles[i]);
 	    }
 
-	    var emailAddress = $emailAddress.val().trim();
 	    sendEmail(emailAddress, newPlaylist);
 
 
 	    // global tag array
-	    // for(i = 0; i < tags.length; i++) {
-	    //   tagsRef.child('/'+tags[i]+'/').set({
-	    //     'tags': 'tag'
-	    //   });
-	    // }
+	    for(i = 0; i < tags.length; i++) {
+	      tagsRef.child('/'+tags[i]+'/').set({
+	        'tags': 'tag'
+	      });
+	    }
 
 
 	    return false;
@@ -395,6 +400,7 @@ var BB = (function() {
 
 		userTags.push(newTag);
 		console.log(userTags);
+		$('#js-add-tags').val("");
 	}
 
 	function removeTag() {
@@ -446,6 +452,7 @@ var BB = (function() {
 				}
 
 			})
+			$playlistSearch.val("");
 		})
 	}
 
@@ -456,12 +463,7 @@ var BB = (function() {
    function sendEmail(emailAddress, newPlaylist) {
     var sendToAddress = emailAddress;
     var playlistRef = playlistsRef.child('/'+newPlaylist+'/');
-		var validAddress = /[^@]+@[^@]+/.test(sendToAddress);
 
-		if(!validAddress) {
-			$displayError.append('<h5><em>Oops! That\'s not a valid email address.</em></h5>');
-			return false;
-		} else {
 			playlistRef.on('value', function(snapshot) {
 	      var playlist = snapshot.val();
 
@@ -474,39 +476,43 @@ var BB = (function() {
 	          var vimg = videos[video].defaultImg;
 						defaultImages.push(vimg);
 	        }
-	      }
+				}
 
 
 				//  temporarily disabled to avoid using up emails
 		    //  -----------------------------------------------------------
-		     emailjs.send('default_service', 'send_playlist', {
-		       'to_email': sendToAddress,
-		       'src1': defaultImages[0],
-					 'src2': defaultImages[1],
-					 'src3': defaultImages[2],
-		       'uri_link': uri,
-					 'playlist_name': playlistName
-		     }).then(
-		      function(response) {
-		        console.log("SUCCESS", response);
-						$('#js-email-success').removeClass('disable');
-						$('.playlist-review-send').css('opacity', '0.5');
-						setTimeout(function() {
-							titles = [];
-							$('#js-email-success').addClass('disable');
-							$('.playlist-review-send').css('opacity', '1').addClass('disable');
-							$('.search-yt').removeClass('opacity');
-							$('.yt-results, #js-selected-list').empty();
-							$('#js-view-new-playlist').addClass('disabled');
-						}, 5000);
-		      },
-		      function(error) {
-		        console.log("FAILED", error);
-		      })
+		    //  emailjs.send('default_service', 'send_playlist', {
+		    //    'to_email': sendToAddress,
+		    //    'src1': defaultImages[0],
+				// 	 'src2': defaultImages[1],
+				// 	 'src3': defaultImages[2],
+		    //    'uri_link': uri,
+				// 	 'playlist_name': playlistName
+		    //  }).then(
+		    //   function(response) {
+		    //     console.log("SUCCESS", response);
+				// 		$('#js-email-success').removeClass('disable');
+				// 		$('.playlist-review-send').css('opacity', '0.5');
+				// 		setTimeout(function() {
+				// 			reviewSendReset();
+				// 		}, 5000);
+		    //   },
+		    //   function(error) {
+		    //     console.log("FAILED", error);
+		    //   })
 
 				})
-		}
-
   }
+
+	function reviewSendReset() {
+		titles = [];
+		$('#js-user-tags, #js-video-list').empty();
+		$('#js-playlist-name, #js-email-address').val("");
+		$('#js-email-success').addClass('disable');
+		$('.playlist-review-send').css('opacity', '1').addClass('disable');
+		$('.search-yt').removeClass('opacity');
+		$('.yt-results, #js-selected-list').empty();
+		$('#js-view-new-playlist').addClass('disabled');
+	}
 
 })();

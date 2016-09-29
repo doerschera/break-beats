@@ -274,3 +274,28 @@ a {
     }
   }
 }
+
+
+// view playlist
+
+.view-playlist {
+  h5, p {
+    color: $light-blue;
+  }
+  h5 {
+    margin-top: 50px;
+  }
+  input {
+    @include big-search-bar($light-blue, $light-blue);
+    margin-top: 0px;
+  }
+  #js-view-playlist-email {
+    @include big-button($light-blue);
+  }
+  #js-video-display {
+    margin-top: 250px;
+    height: 700px;
+    width: 500px;
+    border: solid 1px $light-blue;
+  }
+}

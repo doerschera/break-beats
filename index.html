@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <!-- Materialize Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     <!-- materialize icons -->
@@ -14,11 +15,11 @@
   </head>
   <body>
 
-    <div class="disable landing-page">
+    <div class="landing-page">
       <div class="container">
         <div class="row">
           <div class="col s4">
-            <img class="logo" src="assets/style/images/logo.png" alt="Break/Beats" />
+            <img class="logo" src="assets/style/images/logo-magenta.png" alt="Break/Beats" />
           </div>
         </div>
         <div class="row">
@@ -53,7 +54,10 @@
       <div class="container">
         <div class="row">
           <div class="col s4">
-            <img class="logo" src="assets/style/images/logo.png" alt="Break/Beats" />
+            <img class="logo" src="assets/style/images/logo-magenta.png" alt="Break/Beats" />
+          </div>
+          <div class="col s4 offset-s4">
+            <a href="#" id="js-view-create" class="top-link"><h1>//create a playlist</h1></a>
           </div>
         </div>
         <div class="row">
@@ -63,8 +67,10 @@
           </div>
         </div>
         <div class="row">
-          <div class="playlist-results col s12">
-            <div class="playlist-display col s4">
+          <div>
+            <div class="playlist-results col s12">
+            </div>
+            <!-- <div class="playlist-display col s4">
               <div class="content-wrapper">
                 <h3>Cool Cats</h3>
                 <ul>
@@ -86,9 +92,9 @@
                   <button type="button" id="js-view-playlist">view</button>
                 </div>
               </div>
-            </div>
-            <div class="playlist-display col s4">
-              <div class="content-wrapper">
+            </div> -->
+            <!-- <div class="playlist-display col s4"> -->
+              <!-- <div class="content-wrapper">
                 <h3>Cool Cats</h3>
                 <ul>
                   <li>
@@ -115,76 +121,46 @@
                   </div>
                   <a class="waves-effect btn" id="js-view-playlist">view</a>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="opacity search-yt">
+    <div class="disable search-yt">
       <div class="container">
         <div class="row">
           <div class="col s4">
-            <img class="logo" src="assets/style/images/logo.png" alt="Break/Beats" />
+            <img class="logo" src="assets/style/images/logo-slate.png" alt="Break/Beats" />
+          </div>
+          <div class="col s4 offset-s4">
+            <a href="#" id="js-view-search" class="top-link"><h1>//search playlists</h1></a>
           </div>
         </div>
         <div class="row">
           <div class="col s6 offset-s3">
-            <input type="text" placeholder="find a playlist..." id="js-yt-search"></input>
+            <input type="text" placeholder="find a video..." id="js-yt-search"></input>
             <a class="waves-effect btn" id="js-yt-search-button">search</a>
           </div>
         </div>
         <div class="row">
-          <div class="yt-resutls col s9">
-            <div class="video col s6">
-              <div>
-                video
-              </div>
-            </div>
-            <div class="video col s6">
-              <div>
-                video
-              </div>
-            </div>
-            <div class="video col s6">
-              <div>
-                video
-              </div>
-            </div>
-            <div class="video col s6">
-              <div>
-                video
-              </div>
-            </div>
-            <div class="video col s6">
-              <div>
-                video
-              </div>
-            </div>
-            <div class="video col s6">
-              <div>
-                video
-              </div>
-            </div>
+          <div class="yt-results col s9">
           </div>
           <div class="selected-videos col s3">
             <h3>Selected</h3>
-            <ul>
-              <li>Hipster Kitten Loves Bowties</li>
-              <li>pLeAse loooveee me</li>
-              <li>THE Kermit kitten talk show</li>
+            <ul id="js-selected-list">
             </ul>
-            <a class="waves-effect btn" id="js-view-new-playlist">view</a>
+            <a class="waves-effect btn disabled" id="js-view-new-playlist">view</a>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="playlist-review-send">
+    <div class="disable playlist-review-send">
       <div class="container">
         <div id="close-review-send">
-          <a href="#"><i class="close material-icons">close</i></a>
+          <a href="#"><i class="close material-icons" id="js-close-send-review">close</i></a>
         </div>
         <div class="row">
           <div class="col s9">
@@ -198,7 +174,7 @@
           <div class="col s3">
             <div class="send-column col s10">
               <div id="js-send-email">
-                <a class="waves-effect waves-light btn" href="#"><h2>send</h2></a>
+                <a class="waves-effect waves-light btn" href="#" ><h2>send</h2></a>
               </div>
               <a href="#">
                 save without sending
@@ -208,50 +184,26 @@
         </div>
         <div class="row">
           <div class="col s9">
-            <div class="col s6">
-              <div class="playlist-display">
-                <h3>Cool Cats</h3>
-                <ul>
-                  <li>
-                    <img src="#" alt="video1" />
-                    <p>hipster kitten loves bowties</p>
-                  </li>
-                  <li>
-                    <img src="#" alt="video1" />
-                    <p>pLeAsE loooovvvee me</p>
-                  </li>
-                  <li>
-                    <img src="#" alt="video1" />
-                    <p>THE kitten kermit talk show</p></li>
-                </ul>
-              </div>
+            <div class="col s6 playlist-display">
+              <ul id="js-video-list">
+              </ul>
             </div>
             <div class="col s6">
               <input type="text" placeholder="add tags..." id="js-add-tags"></input>
               <button type="button" id="js-add-tag-button">add</button>
               <div id="js-user-tags">
-                <div class="chip">
-                  cats
-                  <i class="close material-icons">close</i>
-                </div>
-                <div class="chip">
-                  bowtie
-                  <i class="close material-icons">close</i>
-                </div>
-                <div class="chip">
-                  funny
-                  <i class="close material-icons">close</i>
-                </div>
-                <div class="chip">
-                  hipster
-                  <i class="close material-icons">close</i>
-                </div>
-                <div class="chip">
-                  kitten
-                  <i class="close material-icons">close</i>
-                </div>
               </div>
             </div>
+          </div>
+          <div class="col s3">
+            <div id="js-error-message">
+
+            </div>
+          </div>
+        </div>
+        <div class="disable" id="js-email-success">
+          <div class="round">
+            <i class="large material-icons">done</i>
           </div>
         </div>
       </div>
@@ -266,6 +218,9 @@
     <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <!-- Local JS -->
+    <script type="text/javascript" src="assets/javascript/app.js">
+
+    </script>
 
   </body>
 </html>

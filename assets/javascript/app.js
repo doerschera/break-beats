@@ -561,7 +561,7 @@ var BB = (function() {
           var defaultImg = videos[k].defaultImg;
 					var videoId = videos[k].videoId;
 					var videoTitle = videos[k].videoTitle;
-					searchResultsList(defaultImg);
+					searchResultsList(defaultImg, videoTitle);
         }
 
         counter++;

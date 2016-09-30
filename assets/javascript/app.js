@@ -262,9 +262,16 @@ var BB = (function() {
 			if(index === 0) {
 				$listContainer.children('li').eq(0).remove();
 				titles.splice(0, 1);
+			} else if(index === 1) {
+				$listContainer.children('li').eq(1).remove();
+				titles.splice(0, 1);
 			} else if(index === 2) {
 				$listContainer.children('li').eq(2).remove();
-				titles.splice(1, 1);
+
+				titles.splice(0, 1);
+			} else if(index === 3) {
+				$listContainer.children('li').eq(3).remove();
+				titles.splice(0, 1);
 			} else {
 				$listContainer.children('li').eq(4).remove();
 				titles.splice(2, 1);

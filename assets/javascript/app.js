@@ -81,6 +81,7 @@ var BB = (function() {
 		}
 		function renderNewPlaylist() {
 			$playlistVideoContainer.empty();
+			$newTags.empty();
 			for(var i = 0; i < titles.length; i++) {
 				var title = titles[i].title;
 				var image = titles[i].image;

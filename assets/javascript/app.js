@@ -593,7 +593,6 @@ var BB = (function() {
 		var validAddress = /[^@]+@[^@]+/.test(emailAddress);
 		var playlistTitle = $('h3').html();
 		var playlistId = uri.replace(/^[^=]*=/, "");
-		console.log(playlistId);
 
 		$('#message').empty();
 
@@ -615,7 +614,7 @@ var BB = (function() {
 				console.log(emailAddress);
 				console.log(defaultImages);
 				console.log(uri);
-				// console.log(playlistTitle);
+				console.log(playlistTitle);
 				// email.js('default_service', 'send_playlist', {
 				// 	'to_email': emailAddress,
 				// 	'src1': defaultImages[0],

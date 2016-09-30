@@ -620,7 +620,7 @@ var BB = (function() {
 					'playlist_name': playlistTitle
 				}).then(
 					function(response) {
-						console.log("SUCCESS", respnse);
+						console.log("SUCCESS", response);
 						$('#message').append('<h5><em>Sent!</em></h5>');
 						$('#js-forward-email-address').val("");
 						setTimeout(function() {

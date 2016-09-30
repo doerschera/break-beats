@@ -44,6 +44,11 @@ a {
     width: 300px;
     font-size: 3.75rem; }
 
+.ui-menu {
+  background-color: #e6e6e6;
+  width: 33.333%;
+  padding-left: 10px; }
+
 #js-view-create:hover {
   color: #AB537F; }
 

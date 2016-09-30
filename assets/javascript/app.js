@@ -50,6 +50,7 @@ var BB = (function() {
 			$displayError = $('#js-error-message'),
 			$close = $('#js-close-send-review'),
 			$magenta = '#AB537F',
+			data =[],
       query,
       searchTerm,
       videoId,
@@ -59,6 +60,7 @@ var BB = (function() {
       checkedBoxes,
       maxResults = 10,
 			playlistCounter = 0,
+			playlistIds = [],
       paginationData;
 
 	// render DOM
@@ -111,13 +113,15 @@ var BB = (function() {
 			var index = $(this).index();
 			var height = $(this).height();
 			var width = $(this).width();
+			console.log(playlistIds[index]);
 			$('.playlist-hover').css({
 				'height': height,
 				'width': width
 			})
 			$('.playlist-hover').append('<h4>This playlist is...</h4>');
 			renderPlaylistTags(index);
-			$('.playlist-hover').append('<a class="waves-effect btn" id="js-view-playlist">view</a>');
+			$('.playlist-hover').append('<a href="https://mighty-headland-49377.herokuapp.com/break/?breakid='+playlistIds[index]+'" class="waves-effect btn" id="js-view-playlist">view</a>');
+
 		}
 		function renderPlaylistTags(index) {
 			console.log(returnedTags);
@@ -275,17 +279,34 @@ var BB = (function() {
    * get URI parameters to display break videos
    * ---------------------------------------- */
 
-  function getURIParameter(paramID, url) {
-    if (!url) url = window.location.href;
-    paramID = paramID.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + paramID + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
+	 function getURIParameter(paramID, url) {
+     if (!url) url = window.location.href;
+     paramID = paramID.replace(/[\[\]]/g, "\\$&");
+     var regex = new RegExp("[?&]" + paramID + "(=([^&#]*)|&|#|$)"),
+         results = regex.exec(url);
+     if (!results) return null;
+     if (!results[2]) return '';
+     var playlistId = results[2].replace(/\+/g, " ");
+     // return decodeURIComponent(atob(playlistId));
+     return playlistId;
+   }
 
-    var playlistId = results[2].replace(/\+/g, " ");
-    return decodeURIComponent(atob(playlistId));
-  }
+ // add to DOM
+   playlistId = getURIParameter('breakid');
+
+   playlistsRef.on('value', function(snapshot) {
+     var playlists = snapshot.val();
+     if(playlistId) {
+       $videosContainer.html('<h1>' + playlists[playlistId].vtitle + '</h1>');
+       var videos =playlists[playlistId].videos;
+       for(video in videos) {
+         if(videos.hasOwnProperty(video)) {
+           var vid = videos[video].videoId;
+           $videosContainer.append('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + vid + '?rel=0" frameborder="0" allowfullscreen></iframe>');
+         }
+       }
+     }
+	 })
 
   // usage:
   $('.show-videos').html(getURIParameter('breakid'));
@@ -391,6 +412,28 @@ var BB = (function() {
 		}
   }
 
+	dbRef.child('tags').on('value', function(snapshot) {
+		var tags = snapshot.val();
+		data = Object.keys(tags);
+	})
+
+
+		$('input.autocomplete').autocomplete({
+			source: data,
+			messages: {
+						noResults: '',
+						results: function() {}
+					}
+		});
+
+		// var source = $('input.autocomplete').autocomplete("option", "source");
+
+		// $('input.autocomplete').autocomplete("option", "source", data);
+
+
+
+
+
 	function addTag() {
 		var newTag = $('#js-add-tags').val().trim();
 		var newChip =$('<div class="chip">'+newTag+'</div>');
@@ -430,7 +473,6 @@ var BB = (function() {
 		returnedTags = [];
 		playlistsRef.once('value').then(function(snapshot) {
 			var tagSearch = $playlistSearch.val().trim()
-			console.log(tagSearch);
 
 			snapshot.forEach(function(childSnapshot) {
 				var playlist = childSnapshot.val();
@@ -439,6 +481,9 @@ var BB = (function() {
 
 				if(tags.indexOf(tagSearch) != -1) {
 					console.log(true);
+					var playlistId = childSnapshot.key;
+					playlistIds.push(playlistId);
+					console.log(playlistId);
 					var title = playlist.vtitle;
 					searchResultsTitle(title)
 					returnedTags.push(tags);
@@ -468,7 +513,7 @@ var BB = (function() {
 	      var playlist = snapshot.val();
 
 				var playlistName = playlist.vtitle;
-				var uri = "https://afternoon-falls-60599.herokuapp.com/break/?breakid=" + newPlaylist
+				var uri = "https://mighty-headland-49377.herokuapp.com/break/?breakid=" + newPlaylist
 	      var defaultImages = [];
 	      var videos = playlist.videos;
 	      for(video in videos) {

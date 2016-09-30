@@ -58,6 +58,13 @@ a {
   }
 }
 
+.ui-menu {
+  // background-color: rgba(171, 83, 127, 0.5);
+  background-color: #e6e6e6;
+  width: 33.333%;
+  padding-left: 10px;
+}
+
 #js-view-create:hover {
   color: $magenta;
 }

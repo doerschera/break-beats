@@ -62,8 +62,9 @@
           </div>
         </div>
         <div class="row">
-          <div class="col s6 offset-s3">
-            <input type="text" placeholder="find a playlist..." id="js-playlist-search"></input>
+          <div class="form-input col s6 offset-s3">
+            <input type="text" placeholder="find a playlist..." id="js-playlist-search" class="autocomplete"></input>
+            <label for="js-playlist-search"></label>
             <a class="waves-effect btn" id="js-playlist-search-button">search</a>
           </div>
         </div>
@@ -215,6 +216,8 @@
 
     <!-- javascript/jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- jquery UI -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!-- materialize compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <!-- EmailJS -->

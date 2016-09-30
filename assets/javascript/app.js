@@ -509,17 +509,18 @@ var BB = (function() {
 
     var counter = 0;
     var max = 10;
-    var playlists = snapshot.val();
 
 
-      for (i in playlists) {
-        if(counter == max) return;
+      snapshot.forEach(function(childSnapshot) {
+				if(counter == max) return;
 
         // store videos obj
-        var videos = playlists[i].videos;
-				var title = playlists[i].vtitle;
-				var playlistId = playlists.key;
-				var tags = playlists[i].vtags;
+				var playlists = childSnapshot.val();
+        var videos = playlists.videos;
+				var title = playlists.vtitle;
+				var playlistId = childSnapshot.key;
+				console.log(playlistId);
+				var tags = playlists.vtags;
 				returnedTags.push(tags);
 				playlistIds.push(playlistId);
 				searchResultsTitle(title);
@@ -533,7 +534,8 @@ var BB = (function() {
         counter++;
 				playlistCounter++;
         console.log(counter);
-      }
+			})
+
 
   });
 	}

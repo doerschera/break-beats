@@ -82,6 +82,7 @@ var BB = (function() {
 		function renderNewPlaylist() {
 			$playlistVideoContainer.empty();
 			$newTags.empty();
+			$('#js-playlist-name').val("");
 			for(var i = 0; i < titles.length; i++) {
 				var title = titles[i].title;
 				var image = titles[i].image;
@@ -672,7 +673,8 @@ var BB = (function() {
 		$('#js-email-success').addClass('disable');
 		$('.playlist-review-send').css('opacity', '1').addClass('disable');
 		$('.search-yt').removeClass('opacity');
-		$('.yt-results, #js-selected-list').empty();
+		$('.yt-results').empty();
+		$('#js-selected-list').empty();
 		$('#js-view-new-playlist').addClass('disabled');
 	}
 

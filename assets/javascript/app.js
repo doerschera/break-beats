@@ -592,10 +592,12 @@ var BB = (function() {
 		var emailAddress = $('#js-forward-email-address').val();
 		var validAddress = /[^@]+@[^@]+/.test(emailAddress);
 		var playlistTitle = $('h3').html();
+		var playlistId = uri.replace(/^[^=]*=/, "");
+		console.log(playlistId);
 
 		$('#message').empty();
 
-		playlistsRef.child('/'+uri+'/').on('value', function(snapshot) {
+		playlistsRef.child('/'+playlistId+'/').on('value', function(snapshot) {
 			var playlist = snapshot.val();
 			var videos = playlist.videos;
 			var defaultImages = [];

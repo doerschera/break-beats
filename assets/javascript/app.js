@@ -611,27 +611,23 @@ var BB = (function() {
 				$('#message').append('<h5><em>Oops! That\'s not a valid email address.</em></h5>');
 				return false;
 			} else {
-				console.log(emailAddress);
-				console.log(defaultImages);
-				console.log(uri);
-				console.log(playlistTitle);
-				// email.js('default_service', 'send_playlist', {
-				// 	'to_email': emailAddress,
-				// 	'src1': defaultImages[0],
-				// 	'src2': defaultImages[1],
-				// 	'src3': defaultImages[2],
-				// 	'uri_link': uri,
-				// 	'playlist_name': playlistTitle
-				// }).then(
-				// 	function(response) {
-				// 		console.log("SUCCESS", respnse);
-				// 		$('#message').append('<h5><em>Sent!</em></h5>');
-				// 		$('#js-forward-email-address').val("");
-				// 		setTimeout(function() {
-				// 			$('#message').empty()
-				// 		}, 2000);
-				// 	}
-				// )
+				email.js('default_service', 'send_playlist', {
+					'to_email': emailAddress,
+					'src1': defaultImages[0],
+					'src2': defaultImages[1],
+					'src3': defaultImages[2],
+					'uri_link': uri,
+					'playlist_name': playlistTitle
+				}).then(
+					function(response) {
+						console.log("SUCCESS", respnse);
+						$('#message').append('<h5><em>Sent!</em></h5>');
+						$('#js-forward-email-address').val("");
+						setTimeout(function() {
+							$('#message').empty()
+						}, 2000);
+					}
+				)
 			}
 		})
 

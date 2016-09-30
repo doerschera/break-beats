@@ -430,7 +430,7 @@ footer {
   margin-top: 150px; }
 .view-playlist .video-container {
   margin-top: 40px; }
-.view-playlist .message h5 {
+.view-playlist #message h5 {
   margin-top: 0; }
 
 @media screen and (max-width: 825px) {

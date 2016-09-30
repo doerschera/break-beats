@@ -120,7 +120,7 @@ var BB = (function() {
 			})
 			$('.playlist-hover').append('<h4>This playlist is...</h4>');
 			renderPlaylistTags(index);
-			$('.playlist-hover').append('<a href="https://mighty-headland-49377.herokuapp.com/break/?breakid='+playlistIds[index]+'" class="waves-effect btn" id="js-view-playlist">view</a>');
+			$('.playlist-hover').append('<a href="https://pure-harbor-98837.herokuapp.com/break/?breakid='+playlistIds[index]+'" class="waves-effect btn" id="js-view-playlist">view</a>');
 
 		}
 		function renderPlaylistTags(index) {
@@ -513,7 +513,7 @@ var BB = (function() {
 	      var playlist = snapshot.val();
 
 				var playlistName = playlist.vtitle;
-				var uri = "https://mighty-headland-49377.herokuapp.com/break/?breakid=" + newPlaylist
+				var uri = "https://pure-harbor-98837.herokuapp.com/break/?breakid=" + newPlaylist
 	      var defaultImages = [];
 	      var videos = playlist.videos;
 	      for(video in videos) {

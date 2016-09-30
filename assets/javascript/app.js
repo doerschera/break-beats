@@ -173,6 +173,9 @@ var BB = (function() {
 			$('.search-playlists').addClass('disable');
 			$('.search-yt').removeClass('disable');
 		})
+		$('#send-break').on('click', function() {
+			page = "landing";
+		})
 		$('#js-forward-email').on('click', forwardPlaylist);
 		$(document).on('keypress', function(event) {
 			if(event.which == 13) {

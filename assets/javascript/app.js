@@ -142,6 +142,7 @@ var BB = (function() {
 		});
 		$landingSearch.on('click', function() {
 			hideLanding('.search-playlists');
+			loadBrowse();
 		});
 		$viewNewPlaylist.on('click', function() {
 			$(document).scrollTop(0);
@@ -471,6 +472,7 @@ var BB = (function() {
 	function searchTags() {
 		$('.playlist-results').empty();
 		returnedTags = [];
+		playlistIds = [];
 		playlistsRef.once('value').then(function(snapshot) {
 			var tagSearch = $playlistSearch.val().trim()
 
@@ -499,6 +501,41 @@ var BB = (function() {
 			})
 			$playlistSearch.val("");
 		})
+	}
+
+	function loadBrowse() {
+		// get the first 10 playlists
+  playlistsRef.on('value', function(snapshot) {
+
+    var counter = 0;
+    var max = 10;
+    var playlists = snapshot.val();
+
+
+      for (i in playlists) {
+        if(counter == max) return;
+
+        // store videos obj
+        var videos = playlists[i].videos;
+				var title = playlists[i].vtitle;
+				var playlistId = playlists.key;
+				var tags = playlists[i].vtags;
+				returnedTags.push(tags);
+				playlistIds.push(playlistId);
+				searchResultsTitle(title);
+        for (k in videos) {
+          var defaultImg = videos[k].defaultImg;
+					var videoId = videos[k].videoId;
+					var videoTitle = videos[k].videoTitle;
+					searchResultsList(defaultImg);
+        }
+
+        counter++;
+				playlistCounter++;
+        console.log(counter);
+      }
+
+  });
 	}
 
 	/* -------------------------------------------

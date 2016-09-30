@@ -119,11 +119,15 @@ a {
   .playlist-results {
     margin-top: 50px;
     .playlist-display {
-      @include playlist-display($magenta);
+      @include playlist-display($magenta, $magenta-border);
       border: none;
       margin-left: 8.33333%;
       margin-bottom: 8.3333%;
       max-height: 100%;
+      background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(171,83,127,0.2) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(171,83,127,0.2) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(171,83,127,0.2) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#33ab537f',GradientType=0 ); /* IE6-9 */
     }
   }
   .playlist-hover {
@@ -239,10 +243,18 @@ a {
     }
   }
   #new-playlist-display {
-    @include playlist-display($light-blue);
+    @include playlist-display($light-blue, $light-blue);
     -webkit-box-shadow: 7px 7px 5px $light-blue;
     -moz-box-shadow:    7px 7px 5px $light-blue;
     box-shadow:         7px 7px 5px $light-blue;
+    margin-top: 20px;
+    ul {
+      li:nth-child(1) {
+        div {
+          border-top: none;
+        }
+      }
+    }
   }
   #js-add-tag-button {
     @include small-button($light-blue);

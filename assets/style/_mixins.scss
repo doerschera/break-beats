@@ -66,7 +66,7 @@
   padding: 0 10px;
 }
 
-@mixin playlist-display($color) {
+@mixin playlist-display($color, $border-color) {
   position: relative;
   bottom: 60px;
   padding: 0;
@@ -78,21 +78,19 @@
     font-size: 1.75rem;
     margin-bottom: 0;
     text-align: center;
-    border-bottom: solid 1px $color;
     color: $color;
   }
   ul {
     margin: 0;
     li {
-      padding: 5px;
       background-color: white;
       // border-bottom: solid 1px $dark-grey;
       div {
-        margin: 10px 0;
+        margin: 0;
+        padding-top: 10px;
         padding-bottom: 15px;
         &:nth-child(odd) {
-          border-top: solid 1px $color;
-          border-bottom: solid 1px $color;
+          border-top: solid 1px $border-color;
         }
       }
       img {

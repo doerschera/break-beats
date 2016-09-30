@@ -271,7 +271,7 @@ var BB = (function() {
 			$wrapperDiv.append('<p class="flow-text col s6">'+title+'</p>');
 			$li.append($wrapperDiv);
 			$('#playlist'+playlistCounter+'> ul').append($li);
-			$('.playlist-display').css('border', 'solid 1px '+$magenta);
+			$('.playlist-display').css('border', 'solid 1px #ead9e2');
 		}
 
 

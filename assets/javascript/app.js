@@ -412,19 +412,19 @@ var BB = (function() {
 		}
   }
 
-	dbRef.child('tags').on('value', function(snapshot) {
-		var tags = snapshot.val();
-		data = Object.keys(tags);
-	})
-
-
-		$('input.autocomplete').autocomplete({
-			source: data,
-			messages: {
-						noResults: '',
-						results: function() {}
-					}
-		});
+	// dbRef.child('tags').on('value', function(snapshot) {
+	// 	var tags = snapshot.val();
+	// 	data = Object.keys(tags);
+	// })
+	//
+	//
+	// 	$('input.autocomplete').autocomplete({
+	// 		source: data,
+	// 		messages: {
+	// 					noResults: '',
+	// 					results: function() {}
+	// 				}
+	// 	});
 
 		// var source = $('input.autocomplete').autocomplete("option", "source");
 

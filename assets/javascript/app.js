@@ -303,7 +303,7 @@ var BB = (function() {
        for(video in videos) {
          if(videos.hasOwnProperty(video)) {
            var vid = videos[video].videoId;
-           $('#js-video-display').append('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + vid + '?rel=0" frameborder="0" allowfullscreen></iframe>');
+           $('#js-video-display').append('<div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/' + vid + '?rel=0" frameborder="0" allowfullscreen></iframe></div>');
          }
        }
      }

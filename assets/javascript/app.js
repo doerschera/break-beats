@@ -595,7 +595,7 @@ var BB = (function() {
 
 		$('#message').empty();
 
-		playlistRef.child(uri).on('value', function(snapshot) {
+		playlistsRef.child(uri).on('value', function(snapshot) {
 			var playlist = snapshot.val();
 			var videos = playlist.videos;
 			var defaultImages = [];

@@ -80,6 +80,7 @@ var BB = (function() {
 			$newTags.append(tag);
 		}
 		function renderNewPlaylist() {
+			$playlistVideoContainer.empty();
 			for(var i = 0; i < titles.length; i++) {
 				var title = titles[i].title;
 				var image = titles[i].image;
@@ -457,10 +458,10 @@ var BB = (function() {
 	// 					results: function() {}
 	// 				}
 	// 	});
-
-		// var source = $('input.autocomplete').autocomplete("option", "source");
-
-		// $('input.autocomplete').autocomplete("option", "source", data);
+	//
+	// 	var source = $('input.autocomplete').autocomplete("option", "source");
+	//
+	// 	$('input.autocomplete').autocomplete("option", "source", data);
 
 
 
@@ -594,25 +595,25 @@ var BB = (function() {
 
 				//  temporarily disabled to avoid using up emails
 		    //  -----------------------------------------------------------
-		    //  emailjs.send('default_service', 'send_playlist', {
-		    //    'to_email': sendToAddress,
-		    //    'src1': defaultImages[0],
-				// 	 'src2': defaultImages[1],
-				// 	 'src3': defaultImages[2],
-		    //    'uri_link': uri,
-				// 	 'playlist_name': playlistName
-		    //  }).then(
-		    //   function(response) {
-		    //     console.log("SUCCESS", response);
-				// 		$('#js-email-success').removeClass('disable');
-				// 		$('.playlist-review-send').css('opacity', '0.5');
-				// 		setTimeout(function() {
-				// 			reviewSendReset();
-				// 		}, 5000);
-		    //   },
-		    //   function(error) {
-		    //     console.log("FAILED", error);
-		    //   })
+		     emailjs.send('default_service', 'send_playlist', {
+		       'to_email': sendToAddress,
+		       'src1': defaultImages[0],
+					 'src2': defaultImages[1],
+					 'src3': defaultImages[2],
+		       'uri_link': uri,
+					 'playlist_name': playlistName
+		     }).then(
+		      function(response) {
+		        console.log("SUCCESS", response);
+						$('#js-email-success').removeClass('disable');
+						$('.playlist-review-send').css('opacity', '0.5');
+						setTimeout(function() {
+							reviewSendReset();
+						}, 5000);
+		      },
+		      function(error) {
+		        console.log("FAILED", error);
+		      })
 
 				})
   }

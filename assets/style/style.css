@@ -427,10 +427,7 @@ footer {
     line-height: 42px;
     text-transform: none; }
 .view-playlist #js-video-display {
-  margin-top: 250px;
-  height: 700px;
-  width: 500px;
-  border: solid 1px #92C6DE; }
+  margin-top: 150px; }
 .view-playlist .video-container {
   margin-top: 40px; }
 

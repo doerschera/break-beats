@@ -434,7 +434,6 @@ var BB = (function() {
 
 
 
-
 	function addTag() {
 		var newTag = $('#js-add-tags').val().trim();
 		var newChip =$('<div class="chip">'+newTag+'</div>');
@@ -562,7 +561,6 @@ var BB = (function() {
 	        }
 				}
 
-
 				//  temporarily disabled to avoid using up emails
 		    //  -----------------------------------------------------------
 		    //  emailjs.send('default_service', 'send_playlist', {
@@ -587,6 +585,54 @@ var BB = (function() {
 
 				})
   }
+
+	function forwardPlaylist() {
+		var uri = window.location.href;
+		var emailAddress = $('#js-forward-email-address').val();
+		var validAddress = /[^@]+@[^@]+/.test(emailAddress);
+		var playlistTitle = $('h3').html();
+
+		$('#message').empty();
+
+		playlistRef.child(uri).on('value', function(snapshot) {
+			var playlist = snapshot.val();
+			var videos = playlist.videos;
+			var defaultImages = [];
+			for(video in videos) {
+				if(videos.hasOwnProperty(video)) {
+					var vimg = videos[video].defaultImg;
+					defaultImages.push(vimg);
+				}
+
+			if(!validAddress) {
+				$('#message').append('<h5><em>Oops! That\'s not a valid email address.</em></h5>');
+				return false;
+			} else {
+				console.log(emailAddress);
+				console.log(defaultImages);
+				console.log(uri);
+				// console.log(playlistTitle);
+				// email.js('default_service', 'send_playlist', {
+				// 	'to_email': emailAddress,
+				// 	'src1': defaultImages[0],
+				// 	'src2': defaultImages[1],
+				// 	'src3': defaultImages[2],
+				// 	'uri_link': uri,
+				// 	'playlist_name': playlistTitle
+				// }).then(
+				// 	function(response) {
+				// 		console.log("SUCCESS", respnse);
+				// 		$('#message').append('<h5><em>Sent!</em></h5>');
+				// 		$('#js-forward-email-address').val("");
+				// 		setTimeout(function() {
+				// 			$('#message').empty()
+				// 		}, 2000);
+				// 	}
+				// )
+			}
+		})
+
+	}
 
 	function reviewSendReset() {
 		titles = [];

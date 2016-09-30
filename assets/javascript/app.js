@@ -297,7 +297,7 @@ var BB = (function() {
    playlistsRef.on('value', function(snapshot) {
      var playlists = snapshot.val();
      if(playlistId) {
-       $videosContainer.html('<h1>' + playlists[playlistId].vtitle + '</h1>');
+       $('#js-video-display').html('<h1>' + playlists[playlistId].vtitle + '</h1>');
        var videos =playlists[playlistId].videos;
        for(video in videos) {
          if(videos.hasOwnProperty(video)) {

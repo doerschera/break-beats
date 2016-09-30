@@ -611,7 +611,7 @@ var BB = (function() {
 				$('#message').append('<h5><em>Oops! That\'s not a valid email address.</em></h5>');
 				return false;
 			} else {
-				email.js('default_service', 'send_playlist', {
+				emailjs.send('default_service', 'send_playlist', {
 					'to_email': emailAddress,
 					'src1': defaultImages[0],
 					'src2': defaultImages[1],

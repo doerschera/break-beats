@@ -603,6 +603,7 @@ var BB = (function() {
 					var vimg = videos[video].defaultImg;
 					defaultImages.push(vimg);
 				}
+			}
 
 			if(!validAddress) {
 				$('#message').append('<h5><em>Oops! That\'s not a valid email address.</em></h5>');

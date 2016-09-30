@@ -161,6 +161,7 @@ var BB = (function() {
 		$('#js-view-search').on('click', function() {
 			$('.search-yt').addClass('disable').removeClass('opacity');
 			$('.search-playlists').removeClass('disable');
+			loadBrowse();
 		})
 		$('#js-view-create').on('click', function() {
 			$('.search-playlists').addClass('disable');

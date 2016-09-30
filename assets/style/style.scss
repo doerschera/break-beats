@@ -308,7 +308,7 @@ footer {
       @include big-search-bar($light-blue, $light-blue);
       margin-top: 0px;
     }
-    #js-view-playlist-email {
+    #js-forward-email {
       @include big-button($light-blue);
     }
   }

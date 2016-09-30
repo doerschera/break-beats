@@ -166,6 +166,7 @@ var BB = (function() {
 			$('.search-playlists').addClass('disable');
 			$('.search-yt').removeClass('disable');
 		})
+		$('#js-forward-email').on('click', forwardPlaylist);
 
 
 

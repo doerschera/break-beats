@@ -410,7 +410,7 @@ footer {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
     max-height: 42px;
     margin-top: 0px; }
-  .view-playlist .send #js-view-playlist-email {
+  .view-playlist .send #js-forward-email {
     margin-left: 10px;
     position: relative;
     bottom: 44px;

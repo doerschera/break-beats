@@ -61,6 +61,7 @@ var BB = (function() {
       maxResults = 10,
 			playlistCounter = 0,
 			playlistIds = [],
+			page = "landing",
       paginationData;
 
 	// render DOM
@@ -139,12 +140,15 @@ var BB = (function() {
 	  $saveButton.on('click', getPlaylistTitle);
 		$createPlaylist.on('click', function() {
 			hideLanding('.search-yt');
+			page = "create";
 		});
 		$landingSearch.on('click', function() {
+			page = "search";
 			hideLanding('.search-playlists');
 			loadBrowse();
 		});
 		$viewNewPlaylist.on('click', function() {
+			page = "review";
 			$(document).scrollTop(0);
 			reviewAndSend();
 			renderNewPlaylist();
@@ -159,15 +163,30 @@ var BB = (function() {
 			$('.playlist-hover').remove();
 		})
 		$('#js-view-search').on('click', function() {
+			page = "search";
 			$('.search-yt').addClass('disable').removeClass('opacity');
 			$('.search-playlists').removeClass('disable');
 			loadBrowse();
 		})
 		$('#js-view-create').on('click', function() {
+			page = "create";
 			$('.search-playlists').addClass('disable');
 			$('.search-yt').removeClass('disable');
 		})
 		$('#js-forward-email').on('click', forwardPlaylist);
+		$(document).on('keypress', function(event) {
+			if(event.which == 13) {
+				if(page == "search") {
+					searchTags();
+				} else if(page == "create") {
+					doSearch();
+				} else if(page == "review") {
+					addTag();
+				} else {
+					return false;
+				}
+			}
+		})
 
 
 

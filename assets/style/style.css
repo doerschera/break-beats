@@ -395,7 +395,7 @@ footer {
   background-size: auto 150px;
   z-index: -1; }
 
-.view-playlist h5, .view-playlist p {
+.view-playlist h3, .view-playlist h5, .view-playlist p {
   color: #92C6DE; }
 .view-playlist h5 {
   margin-top: 50px; }
@@ -431,6 +431,8 @@ footer {
   height: 700px;
   width: 500px;
   border: solid 1px #92C6DE; }
+.view-playlist .video-container {
+  margin-top: 40px; }
 
 @media screen and (max-width: 825px) {
   .call-to-action h1 {

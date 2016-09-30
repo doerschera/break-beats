@@ -296,7 +296,7 @@ footer {
 // view playlist
 
 .view-playlist {
-  h5, p {
+  h3, h5, p {
     color: $light-blue;
   }
   h5 {
@@ -317,6 +317,9 @@ footer {
     height: 700px;
     width: 500px;
     border: solid 1px $light-blue;
+  }
+  .video-container {
+    margin-top: 40px;
   }
 }
 

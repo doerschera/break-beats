@@ -600,25 +600,25 @@ var BB = (function() {
 
 				//  temporarily disabled to avoid using up emails
 		    //  -----------------------------------------------------------
-		    //  emailjs.send('default_service', 'send_playlist', {
-		    //    'to_email': sendToAddress,
-		    //    'src1': defaultImages[0],
-				// 	 'src2': defaultImages[1],
-				// 	 'src3': defaultImages[2],
-		    //    'uri_link': uri,
-				// 	 'playlist_name': playlistName
-		    //  }).then(
-		    //   function(response) {
-		    //     console.log("SUCCESS", response);
-				// 		$('#js-email-success').removeClass('disable');
-				// 		$('.playlist-review-send').css('opacity', '0.5');
-				// 		setTimeout(function() {
-				// 			reviewSendReset();
-				// 		}, 5000);
-		    //   },
-		    //   function(error) {
-		    //     console.log("FAILED", error);
-		    //   })
+		     emailjs.send('default_service', 'send_playlist', {
+		       'to_email': sendToAddress,
+		       'src1': defaultImages[0],
+					 'src2': defaultImages[1],
+					 'src3': defaultImages[2],
+		       'uri_link': uri,
+					 'playlist_name': playlistName
+		     }).then(
+		      function(response) {
+		        console.log("SUCCESS", response);
+						$('#js-email-success').removeClass('disable');
+						$('.playlist-review-send').css('opacity', '0.5');
+						setTimeout(function() {
+							reviewSendReset();
+						}, 5000);
+		      },
+		      function(error) {
+		        console.log("FAILED", error);
+		      })
 
 				})
   }
@@ -647,23 +647,23 @@ var BB = (function() {
 				$('#message').append('<h5><em>Oops! That\'s not a valid email address.</em></h5>');
 				return false;
 			} else {
-				// emailjs.send('default_service', 'send_playlist', {
-				// 	'to_email': emailAddress,
-				// 	'src1': defaultImages[0],
-				// 	'src2': defaultImages[1],
-				// 	'src3': defaultImages[2],
-				// 	'uri_link': uri,
-				// 	'playlist_name': playlistTitle
-				// }).then(
-				// 	function(response) {
-				// 		console.log("SUCCESS", response);
-				// 		$('#message').append('<h5><em>Sent!</em></h5>');
-				// 		$('#js-forward-email-address').val("");
-				// 		setTimeout(function() {
-				// 			$('#message').empty()
-				// 		}, 3000);
-				// 	}
-				// )
+				emailjs.send('default_service', 'send_playlist', {
+					'to_email': emailAddress,
+					'src1': defaultImages[0],
+					'src2': defaultImages[1],
+					'src3': defaultImages[2],
+					'uri_link': uri,
+					'playlist_name': playlistTitle
+				}).then(
+					function(response) {
+						console.log("SUCCESS", response);
+						$('#message').append('<h5><em>Sent!</em></h5>');
+						$('#js-forward-email-address').val("");
+						setTimeout(function() {
+							$('#message').empty()
+						}, 3000);
+					}
+				)
 			}
 		})
 

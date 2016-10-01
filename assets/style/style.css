@@ -30,7 +30,8 @@ a {
   position: absolute; }
 
 .logo {
-  width: 100px;
+  height: 60px;
+  width: auto;
   position: absolute;
   left: 20px;
   top: 20px; }

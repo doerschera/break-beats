@@ -107,8 +107,10 @@ var BB = (function() {
 		function reviewAndSend() {
 			$('.search-yt').addClass('opacity');
 			$('.playlist-review-send').removeClass('disable');
+			userTags = [];
 		}
 		function closeReviewSend() {
+			page = "create";
 			$('.playlist-review-send').addClass('disable');
 			$('.search-yt').removeClass('opacity');
 		}
@@ -538,6 +540,7 @@ var BB = (function() {
 
 	function loadBrowse() {
 		// get the first 10 playlists
+		$('.playlist-results').empty();
   playlistsRef.on('value', function(snapshot) {
 
     var counter = 0;

@@ -169,6 +169,7 @@ var BB = (function() {
 		})
 		$('#js-view-search').on('click', function() {
 			page = "search";
+			returnedTags = [];
 			$('.search-yt').addClass('disable').removeClass('opacity');
 			$('.search-playlists').removeClass('disable');
 			loadBrowse();
